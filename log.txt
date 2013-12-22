@@ -1,0 +1,6 @@
+12/4/2013 3:20:03 PM : i Game:Awake
+12/4/2013 3:20:03 PM : i Game:Start start
+12/4/2013 3:20:04 PM : Game:Start end
+12/4/2013 3:21:42 PM : i Game:Awake
+12/4/2013 3:21:43 PM : i Game:Start start
+12/4/2013 3:21:44 PM : Game:Start end
