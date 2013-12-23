@@ -48,7 +48,8 @@ public class GameController : MonoBehaviour {
 	
 	// start application as server or client
 	// setup screen and camera settings
-	void Start() {
+	void Start() 
+	{
 		NavTrans = Player.GetComponent<PlayerMovement>();
 		NavRot = Player.GetComponent<PlayerRotation>();
 		NavTrans.enabled = false;

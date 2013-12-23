@@ -6,16 +6,13 @@
 using UnityEngine;
 
 [RequireComponent (typeof(NetworkView))] // for RPC
-
 public class TriggerButtonSequence : MonoBehaviour
 {
  
     // =============================================================================
     // MEMBERS ---------------------------------------------------------------------
-    [SerializeField]
-    private bool RestartAfterFinish = true;
-    [SerializeField]
-    private TriggerButton[] Buttons;
+    [SerializeField]    private bool RestartAfterFinish = true;
+    [SerializeField]    private TriggerButton[] Buttons;
     private ConfigClass Config;
     private NetworkView NetView;
     private int Current = -1;

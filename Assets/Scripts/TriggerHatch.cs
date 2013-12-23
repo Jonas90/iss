@@ -11,7 +11,12 @@ public class TriggerHatch : MonoBehaviour
 
     // =============================================================================
     #region MEMBERS
-    public enum TriggerType
+    private ConfigClass Config;
+    private NetworkView NetView;
+	
+	public TriggerButtonSequence Script;
+	
+	public enum TriggerType
     {
         Trigger,
         InstantOpen,
@@ -25,46 +30,47 @@ public class TriggerHatch : MonoBehaviour
         Script
     }
  
+	private bool IsInit;
     public TriggerType Type;
     public TriggerObject Trigger;
-    public int AnimationsOpenSize;
+	
+    private Animation Ani;
+	public int AnimationsOpenSize;
     public int AnimationsCloseSize;
     public AnimationClip[] AnimationsOpen;
     public AnimationClip[] AnimationsClose;
-    public TriggerButtonSequence Script;
-    private ConfigClass Config;
-    private Animation Ani;
-    private NetworkView NetView;
-    private bool IsInit;
+	
+
+    
     #endregion
     // =============================================================================
  
-    public TriggerHatch()
-    {
-        Type = new TriggerType();
-        Trigger = new TriggerObject();
-        AnimationsOpenSize = 1;
-        AnimationsCloseSize = 1;
-        AnimationsOpen = new AnimationClip[AnimationsOpenSize];
-        AnimationsClose = new AnimationClip[AnimationsCloseSize];
-        Script = new TriggerButtonSequence();
-        Config = new ConfigClass();
-        Ani = new Animation();
-        NetView = new NetworkView();
-        IsInit = false;
-    }
-
-
+//dan Konstructoren sind in unity ein noGo bei klassen die von MonoBehaviour erben !!!!
+//http://answers.unity3d.com/questions/32413/using-constructors-in-unity-c.html	
+//deshalb: constructor --> awake / start
+//http://docs.unity3d.com/Documentation/ScriptReference/MonoBehaviour.Start.html
+//http://docs.unity3d.com/Documentation/ScriptReference/MonoBehaviour.Awake.html
+//awake wird immer asugeführt, start nur wen das gameobject aktiviert ist!
  
     // =============================================================================
     #region METHODS UNITY ---------------------------------------------------------------
  
-    void Start()
-    {
-        Config = GameObject.FindWithTag( "Config" ).GetComponent<ConfigClass>();
+	void Awake()
+	{
+		Type = TriggerType.PermanentClosed;
+		Trigger = TriggerObject.Script;
+		
+		AnimationsOpenSize = 1;
+        AnimationsCloseSize = 1;
+		AnimationsOpen = new AnimationClip[AnimationsOpenSize];
+        AnimationsClose = new AnimationClip[AnimationsCloseSize];
+		
+		Config = GameObject.FindWithTag( "Config" ).GetComponent<ConfigClass>();
         Ani = animation;
         NetView = networkView;
      
+		
+		
         if( !Config.IsServer )
         {
             IsInit = true;
@@ -75,13 +81,13 @@ public class TriggerHatch : MonoBehaviour
         {
             IsInit = true;
         }
-         
+
         if( Trigger == TriggerObject.Script )
         {
-            Script = transform.GetComponent<TriggerButtonSequence>();
+			Script = GetComponent<TriggerButtonSequence>();
         }
-    }
- 
+		
+	} 
  
     void Update()
     { 
@@ -135,9 +141,9 @@ public class TriggerHatch : MonoBehaviour
             Open();
         }
         else if( Type == TriggerType.InstantOpen )
-            {
-                NetView.RPC( "RPCAnimateInstant", RPCMode.AllBuffered, true );
-            }
+        {
+            NetView.RPC( "RPCAnimateInstant", RPCMode.AllBuffered, true );
+        }
     }
  
  
