@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 33f15037c726bc34ea80adb0a6cd6e81
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - spawnMaster: {instanceID: 0}
+  - levelOverview: {instanceID: 0}
+  - ClientCamera: {instanceID: 0}
+  - SoyuzDockingSkin: {instanceID: 0}
+  - Docking_Cam: {fileID: 8400000, guid: 3afe466adce9e3b4fa489e27b53091e4, type: 2}
+  - MasterPlayerPrefab: {instanceID: 0}
+  - MasterPlayer: {instanceID: 0}
+  executionOrder: -20
+  icon: {instanceID: 0}
+  userData: 

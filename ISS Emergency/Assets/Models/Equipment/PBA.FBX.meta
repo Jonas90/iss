@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: 970c083242f664643be75e42840f0bbd
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Brillen_Rahmen
+    100002: Chrome_Parts
+    100004: Glass
+    100006: Gummi
+    100008: Manifold_Box
+    100010: Mask
+    100012: Mask_outlet
+    100014: Nozzle_Slim
+    100016: Outlet
+    100018: //RootNode
+    100020: PBE_Bottle
+    100022: Pressure_Dial
+    100024: Pressure_Gauge
+    100026: Pressure_Vessel
+    100028: Schlauch
+    100030: Vessel_Cover
+    400000: Brillen_Rahmen
+    400002: Chrome_Parts
+    400004: Glass
+    400006: Gummi
+    400008: Manifold_Box
+    400010: Mask
+    400012: Mask_outlet
+    400014: Nozzle_Slim
+    400016: Outlet
+    400018: //RootNode
+    400020: PBE_Bottle
+    400022: Pressure_Dial
+    400024: Pressure_Gauge
+    400026: Pressure_Vessel
+    400028: Schlauch
+    400030: Vessel_Cover
+    2300000: Brillen_Rahmen
+    2300002: Chrome_Parts
+    2300004: Glass
+    2300006: Gummi
+    2300008: Manifold_Box
+    2300010: Mask_outlet
+    2300012: Nozzle_Slim
+    2300014: Outlet
+    2300016: Pressure_Dial
+    2300018: Pressure_Gauge
+    2300020: Pressure_Vessel
+    2300022: Schlauch
+    2300024: Vessel_Cover
+    3300000: Brillen_Rahmen
+    3300002: Chrome_Parts
+    3300004: Glass
+    3300006: Gummi
+    3300008: Manifold_Box
+    3300010: Mask_outlet
+    3300012: Nozzle_Slim
+    3300014: Outlet
+    3300016: Pressure_Dial
+    3300018: Pressure_Gauge
+    3300020: Pressure_Vessel
+    3300022: Schlauch
+    3300024: Vessel_Cover
+    4300000: Vessel_Cover
+    4300002: Schlauch
+    4300004: Pressure_Vessel
+    4300006: Pressure_Gauge
+    4300008: Pressure_Dial
+    4300010: Outlet
+    4300012: Nozzle_Slim
+    4300014: Manifold_Box
+    4300016: Chrome_Parts
+    4300018: Mask_outlet
+    4300020: Gummi
+    4300022: Glass
+    4300024: Brillen_Rahmen
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 

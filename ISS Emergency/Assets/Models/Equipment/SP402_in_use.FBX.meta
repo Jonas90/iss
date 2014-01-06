@@ -1,0 +1,111 @@
+fileFormatVersion: 2
+guid: 7e5daa1f9fb5d844f89faff8270281ee
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Anschluss_SP
+    100002: CSA-CP
+    100004: CSA-CP_asm
+    100006: CSA-CP_Display
+    100008: ON_Off_Label
+    100010: Plastic_tube
+    100012: Product_Label
+    100014: Rohr
+    100016: Sonde
+    100018: Sonde_asm
+    100020: SP402
+    100022: SP402_asm
+    100024: //RootNode
+    400000: Anschluss_SP
+    400002: CSA-CP
+    400004: CSA-CP_asm
+    400006: CSA-CP_Display
+    400008: ON_Off_Label
+    400010: Plastic_tube
+    400012: Product_Label
+    400014: Rohr
+    400016: Sonde
+    400018: Sonde_asm
+    400020: SP402
+    400022: SP402_asm
+    400024: //RootNode
+    2300000: Anschluss_SP
+    2300002: CSA-CP
+    2300004: CSA-CP_Display
+    2300006: ON_Off_Label
+    2300008: Plastic_tube
+    2300010: Product_Label
+    2300012: Rohr
+    2300014: Sonde
+    2300016: SP402
+    3300000: Anschluss_SP
+    3300002: CSA-CP
+    3300004: CSA-CP_Display
+    3300006: ON_Off_Label
+    3300008: Plastic_tube
+    3300010: Product_Label
+    3300012: Rohr
+    3300014: Sonde
+    3300016: SP402
+    4300000: CSA-CP
+    4300002: CSA-CP_Display
+    4300004: Sonde
+    4300006: Rohr
+    4300008: Plastic_tube
+    4300010: SP402
+    4300012: ON_Off_Label
+    4300014: Product_Label
+    4300016: Anschluss_SP
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
