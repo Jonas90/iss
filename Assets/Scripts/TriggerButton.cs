@@ -16,6 +16,9 @@ public class TriggerButton : TriggerAbstract
     [SerializeField]    private bool HideIfInactive ;
     [SerializeField]    private AnimationClip[] AnimationClips;
     private Animation Ani;
+	
+	private bool flagAni = false;	
+	public bool enabled = false;
     // ============================================================================
  
  
@@ -63,18 +66,28 @@ public class TriggerButton : TriggerAbstract
     public void SetAnimation ( Animation animation )
     {
         Ani = animation;
+		flagAni = true;
     }
  
  
     public void SetAsStartingPoint ()
     {
-        //TODO ka
+        //dan
+		//TODO 
         /*
         if ( !AnimationClip || !Ani. )
         {
             return;
         }*/
+		
+		if(AnimationClips == null || !flagAni)
+		{
+			return;
+		}		
+		if ( AnimationClips.Length < 1) return;
      
+		Debug.Log("--play--");
+		
         Ani.Play ( AnimationClips[0].name );
         Ani.Sample ();
         Ani.Stop ();

@@ -48,7 +48,11 @@ public class TriggerEquipment : TriggerAbstract
  
     void OnMouseEnter ()
     {
-        EquipmentAtMercy atMercy = LinkedEquipment as EquipmentAtMercy;
+        //TODO check refs !
+		if(LinkedEquipment == null) return;
+		
+		EquipmentAtMercy atMercy = LinkedEquipment as EquipmentAtMercy;
+		
         if ( !LinkedEquipment.IsAvailable () && !( atMercy && atMercy.IsPotentionallyAvailable () ) )
         {
             base.OnMouseEnter ();
