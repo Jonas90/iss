@@ -20,15 +20,14 @@ public class EquipmentManager : MonoBehaviour
         ShowHelp,
         HideHelp
     }
+ 	
+	//dan
+	//todo fix buttons
+//    [SerializeField]    private InteractionKey ButtonNext; // optional
+//    [SerializeField]    private InteractionKey ButtonLast; // optional
+    [SerializeField]    private Equipment[] AdditionalEquipment; // optional
  
-    [SerializeField]
-    private InteractionKey ButtonNext; // optional
-    [SerializeField]
-    private InteractionKey ButtonLast; // optional
-    [SerializeField]
-    private Equipment[] AdditionalEquipment; // optional
- 
-    private ConfigClass Config;
+    private Config Config;
     private NetworkView NetView;
     private Equipment[] Equipments;
     private int CurrentShown = -1;
@@ -43,7 +42,7 @@ public class EquipmentManager : MonoBehaviour
  
     void Start ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
      
         NetView = networkView;
      
@@ -55,38 +54,38 @@ public class EquipmentManager : MonoBehaviour
             Equipments[oldSize + i] = AdditionalEquipment[i];
         }
      
-        ButtonNext.Initialize ();
-        ButtonLast.Initialize ();
+//        ButtonNext.Initialize ();
+//        ButtonLast.Initialize ();
     }
  
  
     void Update ()
     {
-        if ( !Config.IsServer || !Config.IsGameStarted )
+        if ( !Config.IsServer || !Config.gameStarted )
         {
             return;
         }
          
-        if ( ButtonNext.GetButtonDown () )
-        {
-            Next ();
-        }
-        else if ( ButtonLast.GetButtonDown () )
-            {
-                Last ();
-            }
+//        if ( ButtonNext.GetButtonDown () )
+//        {
+//            Next ();
+//        }
+//        else if ( ButtonLast.GetButtonDown () )
+//        {
+//            Last ();
+//        }
     }
  
  
     void OnGUI ()
     {
-        GUI.skin = Config.InterfaceSkin;
-     
-        if ( Config.OwnClientData.AngleOffset == 0 || Config.IsServer )
-        {
-            // bottom centered          - button instructions
-            GUI.Label ( new Rect ( Screen.width/2.0f, Screen.height - 50f, 0f, 0f ), ButtonsString, "Buttons" );
-        }
+//        GUI.skin = Config.InterfaceSkin;
+//     
+//        if ( Config.OwnClientData.AngleOffset == 0 || Config.IsServer )
+//        {
+//            // bottom centered          - button instructions
+//            GUI.Label ( new Rect ( Screen.width/2.0f, Screen.height - 50f, 0f, 0f ), ButtonsString, "Buttons" );
+//        }
     }
     // =============================================================================
  
@@ -209,9 +208,9 @@ public class EquipmentManager : MonoBehaviour
     private string GetButtonString ()
     {
         string text = "";
-        text += "Press  " + ButtonLast.GetCurrentButton () + "   or   ";
-        text += ButtonNext.GetCurrentButton () + "  to change equipment";
-     
+//        text += "Press  " + ButtonLast.GetCurrentButton () + "   or   ";
+//        text += ButtonNext.GetCurrentButton () + "  to change equipment";
+//     
         return text;
     }
  

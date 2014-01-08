@@ -99,7 +99,8 @@ public /*abstract*/ class MeasurementAbstract : MonoBehaviour
         }
         catch ( Exception e )
         {
-            ConfigClass.Log ( e.ToString (), true );
+			//dan
+			//            Config.Log ( e.ToString (), true );
         }
         finally
         {

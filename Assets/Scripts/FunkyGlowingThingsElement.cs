@@ -19,7 +19,7 @@ public class FunkyGlowingThingsElement : MonoBehaviour
     [SerializeField]    private bool ChangeChildMaterials = true;
     [SerializeField]    private float PlayerMinDistance = 3;
     
-    protected ConfigClass Config;
+    protected Config Config;
     protected Transform Trans;
     protected RendererData[] Renderers;
     protected NetworkView NetView;
@@ -38,7 +38,7 @@ public class FunkyGlowingThingsElement : MonoBehaviour
  
     protected virtual void Awake ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
         Player = GameObject.FindWithTag ( "Player" ).transform;
         Trans = transform;
         NetView = networkView;

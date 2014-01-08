@@ -23,7 +23,8 @@ public class TriggerEquipment : TriggerAbstract
     [SerializeField]    private float TakeAnimationLength = 2; // optional
  
     private PlayerMovement PlayerMov;
-    private PlayerRotation PlayerRot;
+    //TODO Fix player rotation
+	//private PlayerRotation PlayerRot;
     private LayerSetterElement Layer;
     private EquipmentManager EquipManager;
     // =============================================================================
@@ -38,7 +39,8 @@ public class TriggerEquipment : TriggerAbstract
         base.Awake ();
      
         PlayerMov = Player.GetComponent<PlayerMovement> ();
-        PlayerRot = Player.GetComponent<PlayerRotation> ();
+        //dan
+		//PlayerRot = Player.GetComponent<PlayerRotation> ();
         Layer = gameObject.GetComponent<LayerSetterElement> ();
         EquipManager = GameObject.FindObjectOfType ( typeof(EquipmentManager) ) as EquipmentManager;
     }
@@ -87,7 +89,7 @@ public class TriggerEquipment : TriggerAbstract
     private void SetPlayerMotion ( bool status )
     {
         PlayerMov.enabled = status;
-        PlayerRot.TemporaryDisable = !status;
+        //PlayerRot.TemporaryDisable = !status;
     }
 
  

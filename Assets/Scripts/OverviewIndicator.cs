@@ -18,7 +18,7 @@ public class OverviewIndicator : MonoBehaviour
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]
     private Transform IndicatedObject;
-    private ConfigClass Config;
+    private Config Config;
     private Transform Trans;
     // =============================================================================
  
@@ -29,7 +29,7 @@ public class OverviewIndicator : MonoBehaviour
  
     void Start ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
      
         Trans = transform;
     }

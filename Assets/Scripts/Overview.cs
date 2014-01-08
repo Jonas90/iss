@@ -24,7 +24,7 @@ public class Overview : MonoBehaviour
     [SerializeField]
     private GUITexture Background; // optional
 
-    private ConfigClass Config;
+    private Config Config;
     private GuiScreenPosition ScreenPosition;
     private Transform BackgroundTrans;
     // =========================================================================
@@ -36,7 +36,7 @@ public class Overview : MonoBehaviour
  
     void Start ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
      
         ScreenPosition = gameObject.GetComponent<GuiScreenPosition> ();
      
@@ -58,31 +58,31 @@ public class Overview : MonoBehaviour
  
     void Update ()
     {
-        if ( !Config.OwnClientData.ShowGuiCamera || ( Config.IsStandalone () && !Screen.lockCursor ) )
-        {
-            Cam.enabled = false;
-            if ( Background )
-            {
-                Background.enabled = false;
-            }
-         
-            return;
-        }
-     
-        Cam.enabled = true;
-        Cam.rect = new Rect ( 0, 0, 1, 1 );
-     
-        Vector3 xy = Cam.ViewportToScreenPoint ( new Vector3 ( ScreenPosition.X (), ScreenPosition.Y (), 0 ) );
-        Vector3 wh = Cam.ViewportToScreenPoint ( new Vector3 ( ScreenPosition.Width (), ScreenPosition.Height (), 0 ) );
-        Rect screenPixels = new Rect ( xy.x, xy.y, wh.x, wh.y );
-        Cam.pixelRect = screenPixels;
- 
-        if ( Background )
-        {
-            Background.enabled = true;
-            BackgroundTrans.localScale = Vector3.zero; 
-            Background.pixelInset = screenPixels;
-        }
+//        if ( !Config.OwnClientData.ShowGuiCamera || ( Config.IsStandalone () && !Screen.lockCursor ) )
+//        {
+//            Cam.enabled = false;
+//            if ( Background )
+//            {
+//                Background.enabled = false;
+//            }
+//         
+//            return;
+//        }
+//     
+//        Cam.enabled = true;
+//        Cam.rect = new Rect ( 0, 0, 1, 1 );
+//     
+//        Vector3 xy = Cam.ViewportToScreenPoint ( new Vector3 ( ScreenPosition.X (), ScreenPosition.Y (), 0 ) );
+//        Vector3 wh = Cam.ViewportToScreenPoint ( new Vector3 ( ScreenPosition.Width (), ScreenPosition.Height (), 0 ) );
+//        Rect screenPixels = new Rect ( xy.x, xy.y, wh.x, wh.y );
+//        Cam.pixelRect = screenPixels;
+// 
+//        if ( Background )
+//        {
+//            Background.enabled = true;
+//            BackgroundTrans.localScale = Vector3.zero; 
+//            Background.pixelInset = screenPixels;
+//        }
     }
     // =========================================================================
 }

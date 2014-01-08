@@ -19,13 +19,14 @@ public class MeterAbstract : MonoBehaviour
     [SerializeField]    protected TextMesh DisplayRight;
     [SerializeField]    protected Color DisplayColor;
 	
-    protected ConfigClass Config;
+    protected Config Config;
     protected Transform Trans;
     protected AudioSource Audio;
     protected Equipment Equip;
     protected NetworkView NetView;
     protected PlayerMovement PlayerMov;
-    protected PlayerRotation PlayerRot;
+    //dan
+	//protected PlayerRotation PlayerRot;
     // =============================================================================
  
  
@@ -35,7 +36,7 @@ public class MeterAbstract : MonoBehaviour
  
     protected virtual void Awake ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
      
         Trans = transform;
         Audio = audio;
@@ -43,7 +44,10 @@ public class MeterAbstract : MonoBehaviour
      
         GameObject player = GameObject.FindWithTag ( "Player" );
         PlayerMov = player.GetComponent<PlayerMovement> ();
-        PlayerRot = player.GetComponent<PlayerRotation> ();
+		
+		//dan
+		//TODO: fix player Rotation
+        //PlayerRot = player.GetComponent<PlayerRotation> ();
         Equip = gameObject.GetComponent<Equipment> ();
 
         if ( DisplayLeft )
@@ -135,7 +139,8 @@ public class MeterAbstract : MonoBehaviour
     protected void SetPlayerMotion ( bool status )
     {
         PlayerMov.enabled = status;
-        PlayerRot.TemporaryDisable = !status;
+        //dan
+		//PlayerRot.TemporaryDisable = !status;
     }
     // =============================================================================
  

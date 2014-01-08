@@ -24,7 +24,7 @@ public class Crosshair : MonoBehaviour
     private float MovementSmooth = 5;
     [SerializeField]
     private Camera Cam;
-    private ConfigClass Config;
+    private Config Config;
     private Transform CamTransform;
     private NetworkView NetView;
     private Vector3 WorldPosition;
@@ -39,7 +39,7 @@ public class Crosshair : MonoBehaviour
  
     void Awake()
     {
-        Config = GameObject.FindWithTag( "Config" ).GetComponent<ConfigClass>();
+        Config = GameObject.FindWithTag( "Config" ).GetComponent<Config>();
      
         CamTransform = Cam.transform;
         NetView = gameObject.networkView;
@@ -74,7 +74,7 @@ public class Crosshair : MonoBehaviour
             return;
         }
          
-        if( ( Config.IsServer && !Config.IsStandalone() ) || ( Config.IsStandalone() && !Screen.lockCursor ) )
+        if( ( Config.IsServer && !Config.IsStandalone) || ( Config.IsStandalone && !Screen.lockCursor ) )
         {
             return;
         }

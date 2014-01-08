@@ -11,7 +11,7 @@ public class TriggerHatch : MonoBehaviour
 
     // =============================================================================
     #region MEMBERS
-    private ConfigClass Config;
+    private Config Config;
     private NetworkView NetView;
 	
 	public TriggerButtonSequence Script;
@@ -65,11 +65,12 @@ public class TriggerHatch : MonoBehaviour
 		AnimationsOpen = new AnimationClip[AnimationsOpenSize];
         AnimationsClose = new AnimationClip[AnimationsCloseSize];
 		
-		Config = GameObject.FindWithTag( "Config" ).GetComponent<ConfigClass>();
+		Config = GameObject.FindWithTag( "Config" ).GetComponent<Config>();
         Ani = animation;
         NetView = networkView;
      
-		
+		Debug.Log(typeof(Config));
+		Debug.Log(Config);
 		
         if( !Config.IsServer )
         {
@@ -96,7 +97,7 @@ public class TriggerHatch : MonoBehaviour
             return;
         }
          
-        if( !IsInit && Config.IsGameStarted )
+        if( !IsInit && Config.gameStarted )
         {
             MakePermanent();
         }

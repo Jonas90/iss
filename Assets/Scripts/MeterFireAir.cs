@@ -12,7 +12,9 @@ public class MeterFireAir : MeterAbstract
     // =============================================================================
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]
-    private InteractionKey Button; // optional
+    //dan
+	//TODO: fix buttons
+	//private InteractionKey Button; // optional
 
     private MeasurementFireAir MeasurementScript;
     // =============================================================================
@@ -25,8 +27,8 @@ public class MeterFireAir : MeterAbstract
     void Awake ()
     {
         base.Awake ();
-     
-        Button.Initialize ();
+//dan     
+//        Button.Initialize ();
         MeasurementScript = FindObjectOfType ( typeof(MeasurementFireAir) ) as MeasurementFireAir;
     }
  
@@ -37,11 +39,11 @@ public class MeterFireAir : MeterAbstract
         {
             return;
         }
-         
-        if ( Button.GetButtonDown () && IsEquipped () )
-        {
-            StartCoroutine ( YieldMeasure () );
-        }
+//dan         
+//        if ( Button.GetButtonDown () && IsEquipped () )
+//        {
+//            StartCoroutine ( YieldMeasure () );
+//        }
     }
     // =============================================================================
  
@@ -74,7 +76,8 @@ public class MeterFireAir : MeterAbstract
         string room = MeasurementScript.GetCurrentRoomName ( Trans.position );
         MeasurementValues values = MeasurementScript.GetValues ( room );
         string text = !values.isNull() ? values.ToString () : "ERR";
-        ConfigClass.Log ( "AIR room: " + room + " values " + text );
+		//dan
+		//Config.Log ( "AIR room: " + room + " values " + text );
         DisplayValues ( values );
      
         Audio.clip = room.Length == 0 ? SoundError : SoundSuccess;

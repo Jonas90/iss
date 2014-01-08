@@ -88,7 +88,8 @@ public class MeterFirePort : MeterAbstract
 
         MeasurementValues values = MeasurementScript.GetValues( name );
         string text = values.isNull() ? "ERR" : values.ToString();
-        ConfigClass.Log( "PORT port: " + name + " values " + text );
+		//dan
+		//Config.Log( "PORT port: " + name + " values " + text );
         DisplayValues( values );
 
         //dan

@@ -15,7 +15,7 @@ public class AnimationRotateAbstract : MonoBehaviour
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]    protected bool OnlyByServer;
     [SerializeField]    protected Axis RotationAxis;
-    protected ConfigClass Config;
+    protected Config Config;
     protected Transform Trans;
     // =============================================================================
 
@@ -26,7 +26,7 @@ public class AnimationRotateAbstract : MonoBehaviour
     {
         OnlyByServer = true;
         RotationAxis = Axis.Y;
-        Config = new ConfigClass();
+        Config = new Config();
     }
 
     protected virtual void Start ()
@@ -35,12 +35,13 @@ public class AnimationRotateAbstract : MonoBehaviour
         {
             try
             {
-                Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+                Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
             }
             catch ( Exception e )
             {
                 OnlyByServer = false;
-                ConfigClass.Log ( e.ToString (), true );
+                //dan
+				//Config.Log ( e.ToString (), true );
             }
         }
 

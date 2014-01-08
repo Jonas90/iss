@@ -15,7 +15,7 @@ public class FramesPerSecond : MonoBehaviour {
 	[SerializeField]	private bool OnlyShowInDebugMode = true;
 	[SerializeField]	private float UpdateInterval = 0.5f;
 	
-	private ConfigClass Config;
+	private Config Config;
 	private float Accum = 0.0f; // FPS accumulated over the interval
 	private int Frames = 0; // Frames drawn over the interval
 	private float TimeLeft; // Left time for current interval
@@ -27,7 +27,7 @@ public class FramesPerSecond : MonoBehaviour {
 	// METHODS UNITY ---------------------------------------------------------------
 	
 	void Start() {
-		Config = GameObject.FindWithTag("Config").GetComponent<ConfigClass>();
+		Config = GameObject.FindWithTag("Config").GetComponent<Config>();
 		
 	    TimeLeft = UpdateInterval;  
 	}
@@ -50,12 +50,13 @@ public class FramesPerSecond : MonoBehaviour {
 	
 	
 	void OnGUI(){
-		if (OnlyShowInDebugMode && !Config.LogOnScreen)
-			return;
-	
-		GUI.skin = Config.InterfaceSkin;
-		
-		GUI.Label( new Rect(Screen.width - 110 + (30 * Config.OwnClientData.ParallaxOffsetDirection), 30, 40, 20), Text + " FPS", "Debug");
+//dan		
+//		if (OnlyShowInDebugMode && !Config.LogOnScreen)
+//			return;
+//	
+//		GUI.skin = Config.InterfaceSkin;
+//		
+//		GUI.Label( new Rect(Screen.width - 110 + (30 * Config.OwnClientData.ParallaxOffsetDirection), 30, 40, 20), Text + " FPS", "Debug");
 	}
 	// =============================================================================
 }

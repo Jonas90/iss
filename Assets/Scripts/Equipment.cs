@@ -18,7 +18,7 @@ public class Equipment : MonoBehaviour
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]
     protected bool AvailableAtStart;
-    protected ConfigClass Config;
+    protected Config Config;
     protected bool TriggerManual;
     protected bool Available;
     protected System.Object[] TweenTargets;
@@ -40,7 +40,7 @@ public class Equipment : MonoBehaviour
  
     protected virtual void Start ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
         Trans = transform;
      
         Available = AvailableAtStart;

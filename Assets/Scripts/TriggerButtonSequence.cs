@@ -4,6 +4,7 @@
 // 
 
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent (typeof(NetworkView))] // for RPC
 public class TriggerButtonSequence : MonoBehaviour
@@ -12,10 +13,10 @@ public class TriggerButtonSequence : MonoBehaviour
     // =============================================================================
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]    private bool RestartAfterFinish = true;
-    [SerializeField]    private TriggerButton[] Buttons;
-    private ConfigClass Config;
+    [SerializeField]    private List<TriggerButton> Buttons;
+    private Config Config;
     private NetworkView NetView;
-    private int Current = -1;
+    private int Current = 0; //dan war -1
     private bool Finished = false;
     // =============================================================================
  
@@ -26,16 +27,23 @@ public class TriggerButtonSequence : MonoBehaviour
  
     void Start ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
-     
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
+     	Buttons = new List<TriggerButton>();		
+		
         NetView = networkView;
+     	
+		Debug.Log("noloop:");
+		for(int i = 0; i <= Current; i++)
+		{
+			Debug.Log("loop:"+i);
+			Buttons.Add(new TriggerButton());
+			Debug.Log("count:"+Buttons.Count);
+			Buttons[i].SetAnimation ( animation ); // needs to be done
+            Buttons[i].enabled = false;
+		}
      
-        foreach ( TriggerButton button in Buttons )
-        {
-            button.SetAnimation ( animation ); // needs to be done
-            button.enabled = false;
-        }
-     
+		
+		
         RPCSetCurrent ( 0 );
         Buttons[Current].SetAsStartingPoint ();
     }
@@ -73,7 +81,7 @@ public class TriggerButtonSequence : MonoBehaviour
  
     private void SetAllCurrentSERVERONLY ( int newCurrent )
     {
-        if ( newCurrent == Buttons.Length && RestartAfterFinish )
+        if ( newCurrent == Buttons.Count && RestartAfterFinish )
         {
             newCurrent = 0;
         }
@@ -90,13 +98,13 @@ public class TriggerButtonSequence : MonoBehaviour
     [RPC]
     void RPCSetCurrent ( int newCurrent )
     {
-        if ( Current >= 0 )
+        if ( Current > 0 )
         {
             Buttons[Current].enabled = false;
         }   
          
         Current = newCurrent;
-        if ( Current < Buttons.Length )
+        if ( Current < Buttons.Count )
         {
             Buttons[Current].enabled = true;
         }

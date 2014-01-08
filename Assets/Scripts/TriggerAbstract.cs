@@ -16,7 +16,9 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]    protected HoveringText HoverText; // optional
     [SerializeField]    protected Vector3 HoverTextOffset; // optional
-    [SerializeField]    protected InteractionKey Button; // optional
+	//dan
+	//TODO: fix keys
+	//    [SerializeField]    protected InteractionKey Button; // optional
     [SerializeField]    protected string ObjectDescription; // optional
  
     protected Collider Coll;
@@ -33,7 +35,9 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
     protected virtual void Awake ()
     {
         base.Awake ();
-        Button.Initialize ();
+//dan		
+//		Button = new InteractionKey();		
+//        Button.Initialize ();
      
         Coll = collider;
     }
@@ -73,7 +77,10 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
  
     public new bool GetIsTriggered ()
     {
-        return base.GetIsTriggered () && Button.GetButtonDown ();
+        //dan
+		//todo
+		//return base.GetIsTriggered () && Button.GetButtonDown ();
+		return base.GetIsTriggered();
     }
  
  
@@ -94,27 +101,28 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
     {
         base.RPCSetStatus ( status );
  
-        if ( HoverText )
-        {
-            if ( status )
-            {
-                string text = "";
-                if ( Button.GetCurrentButton ().Length != 0 )
-                {
-                    text += /*"System.Environment.NewLine +*/ "press button " + Button.GetCurrentButton ( " or " );
-                }
-                if ( ObjectDescription.Length != 0 )
-                {
-                    text += System.Environment.NewLine + ObjectDescription;
-                }
-             
-                HoverText.ViewOnTarget ( Trans, HoverTextOffset, text );
-            }
-            else
-            {
-                HoverText.Hide ();
-            }
-        }
+		//dan
+//        if ( HoverText )
+//        {
+//            if ( status )
+//            {
+//                string text = "";
+//                if ( Button.GetCurrentButton ().Length != 0 )
+//                {
+//                    text += /*"System.Environment.NewLine +*/ "press button " + Button.GetCurrentButton ( " or " );
+//                }
+//                if ( ObjectDescription.Length != 0 )
+//                {
+//                    text += System.Environment.NewLine + ObjectDescription;
+//                }
+//             
+//                HoverText.ViewOnTarget ( Trans, HoverTextOffset, text );
+//            }
+//            else
+//            {
+//                HoverText.Hide ();
+//            }
+//        }
     }
  
  

@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]
     private float Speed = 5;
-    private ConfigClass Config;
+    private Config Config;
     private CharacterController CC;
     private Transform Trans;
     // =============================================================================
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
  
     void Awake()
     {
-        Config = GameObject.FindWithTag( "Config" ).GetComponent<ConfigClass>();
+        Config = GameObject.FindWithTag( "Config" ).GetComponent<Config>();
         Trans = transform;
      
         CC = gameObject.GetComponent<CharacterController>();

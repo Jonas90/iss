@@ -1,14 +1,19 @@
-using UnityEngine;
 
+
+
+
+
+
+
+using UnityEngine;
 using System;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 
 using System.Threading;
-
 using Cave;
 //using log4net;
-
 
 
 [ExecuteInEditMode]
@@ -20,8 +25,13 @@ public class Config : MonoBehaviour
 	// EINSTELLUNGEN vom Inspector aus erreichbar
 	
  	//dan
-	[HideInInspector]    public int ConnectedClientNumber;
-    [HideInInspector]    public IntVector2 ScreenResolution;
+	[HideInInspector]    public List<System.Object> ClientData;
+	[HideInInspector]    public ClientCameraInfo OwnClientData;
+	
+	
+	//TODO input devices von der iss fixen bzw entfernen
+    //[HideInInspector]    public Device InputDevice;
+	
 	//--
 	
 	public bool gameStarted = false;
@@ -256,6 +266,10 @@ public class Config : MonoBehaviour
 		{
 //			logger.Debug ("CheckIfServerconfig::IsServer.get called");
 			return this.Mode == AppMode.CAVE_SERVER;
+		}
+		set
+		{
+			this.Mode = AppMode.CAVE_SERVER;
 		}
 	}
 	

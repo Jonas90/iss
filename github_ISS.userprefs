@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TriggerButtonSequence.cs">
+    <Files>
+      <File FileName="Assets\Scripts\TriggerAbstract.cs" Line="105" Column="3" />
+      <File FileName="Assets\Scripts\TriggerEquipment.cs" Line="52" Column="1" />
+      <File FileName="Assets\Scripts\Logger.cs" Line="41" Column="6" />
+      <File FileName="Assets\Scripts\TriggerButtonSequence.cs" Line="40" Column="38" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

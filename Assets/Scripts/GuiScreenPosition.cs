@@ -29,7 +29,7 @@ public class GuiScreenPosition : MonoBehaviour
     public float AbsoluteSpacingLeftStandalone = 0.02f;
     public float AbsoluteSpacingBottomStandalone = 0.02f;
     public float AbsoluteWidthStandalone = 0.25f;
-    private ConfigClass Config;
+    private Config Config;
     private float Aspect;
     private float CurrentX;
     private float CurrentY;
@@ -44,7 +44,7 @@ public class GuiScreenPosition : MonoBehaviour
 
     void Start ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<ConfigClass> ();
+        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
     }
  
  
