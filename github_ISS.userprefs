@@ -1,11 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TriggerButtonSequence.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ApplicationStarter.cs">
     <Files>
-      <File FileName="Assets\Scripts\TriggerAbstract.cs" Line="105" Column="3" />
-      <File FileName="Assets\Scripts\TriggerEquipment.cs" Line="52" Column="1" />
-      <File FileName="Assets\Scripts\Logger.cs" Line="41" Column="6" />
-      <File FileName="Assets\Scripts\TriggerButtonSequence.cs" Line="40" Column="38" />
+      <File FileName="Assets\Scripts\ApplicationStarter.cs" Line="386" Column="1" />
+      <File FileName="Assets\Scripts\AnimationRotateAbstract.cs" Line="40" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

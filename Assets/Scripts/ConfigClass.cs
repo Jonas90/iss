@@ -1,4 +1,4 @@
-//dan
+////dan
 //
 //// Hannes Helmholz
 ////
@@ -80,7 +80,7 @@
 //    
 //    //ignore
 //    private NetworkView NetView;
-//	private static NetworkView StaticNetworkView;
+//	  private static NetworkView StaticNetworkView;
 //	
 //    
 //    private static string GuiString = "";

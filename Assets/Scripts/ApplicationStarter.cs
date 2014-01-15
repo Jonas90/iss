@@ -1,7 +1,3 @@
-//dan
-//
-//
-//
 //// Hannes Helmholz
 ////
 //// help functions for GameController
@@ -55,25 +51,25 @@
 //    }
 // 
 // 	
-//    private static Config.Device ParseInputDevice ( string text )
-//    {
-//        Config.Device device = Config.Device.None;
-//     
-//        if ( text.Equals ( "Keyboard" ) )
-//        {
-//            device = Config.Device.Keyboard;
-//        }
-//        else if ( text.Equals ( "Xbox" ) )
-//            {
-//                device = Config.Device.Xbox;
-//            }
-//            else if ( text.Equals ( "Spacepilot" ) )
-//                {
-//                    device = Config.Device.Spacepilot;
-//                }
-//     
-//        return device;
-//    }
+////    private static Config.Device ParseInputDevice ( string text )
+////    {
+////        Config.Device device = Config.Device.None;
+////     
+////        if ( text.Equals ( "Keyboard" ) )
+////        {
+////            device = Config.Device.Keyboard;
+////        }
+////        else if ( text.Equals ( "Xbox" ) )
+////            {
+////                device = Config.Device.Xbox;
+////            }
+////            else if ( text.Equals ( "Spacepilot" ) )
+////                {
+////                    device = Config.Device.Spacepilot;
+////                }
+////     
+////        return device;
+////    }
 // 
 // 
 //    // must be called on all clients to avoid collision detection (should only be done on server)
@@ -83,14 +79,14 @@
 //        Rigidbody[] allRigids = FindObjectsOfType( typeof(Rigidbody) ) as Rigidbody[];
 //
 //
-//        Config.Log ( "destroy " + allRigids.Length + " rigidbodies" );
+//        //Config.Log ( "destroy " + allRigids.Length + " rigidbodies" );
 //        foreach ( Rigidbody body in allRigids )
 //        {
 //            GameObject.Destroy ( body );
 //        }
 //
 //        Collider[] allCollider = FindObjectsOfType ( typeof(Collider) ) as Collider[];
-//        Config.Log ( "disable " + allCollider.Length + " collider" );
+//        //Config.Log ( "disable " + allCollider.Length + " collider" );
 //        foreach ( Collider col in allCollider )
 //        {
 //            col.enabled = false;
@@ -102,14 +98,14 @@
 //    public static void DestroyAllAudio ()
 //    {
 //        AudioSource[] allSources = FindObjectsOfType ( typeof(AudioSource) ) as AudioSource[];
-//        Config.Log ( "destroy " + allSources.Length + " audio sources" );
+//        //Config.Log ( "destroy " + allSources.Length + " audio sources" );
 //        foreach ( AudioSource source in allSources )
 //        {
 //            GameObject.Destroy ( source );
 //        }
 //         
 //        AudioListener[] allListener = FindObjectsOfType ( typeof(AudioListener) ) as AudioListener[];
-//        Config.Log ( "destroy " + allListener.Length + " audio listener" );
+//        //Config.Log ( "destroy " + allListener.Length + " audio listener" );
 //        foreach ( AudioListener listener in allListener )
 //        {
 //            GameObject.Destroy ( listener );
@@ -125,102 +121,103 @@
 //    // set unity quality level setting by config file
 //    // not set if started as standalone
 //    // if setting not supported set lowest quality level
-//    public void SetQualityLevel ()
-//    {
-//        if ( Application.isEditor )
-//        {
-//            Config.Log ( "keep quality level because of editor" );
-//            Config.Log ( "current quality level " + QualitySettings.names[QualitySettings.GetQualityLevel ()] );
-//            return;
-//        }
-//
-//        if ( Config.IsStandalone () )
-//        {
-//            Config.Log ( "keep quality level because of standalone" );
-//            Config.Log ( "current quality level " + QualitySettings.names[QualitySettings.GetQualityLevel ()] );
-//            Config.Log ( "start application with SHIFT-Key hold down to change quality level" );
-//            return;
-//        }
-//
-//        Config.Log ( "set quality level " + Config.QualitySetting );
-// 
-//        int number = -1;
-//        for ( int i = 0; i < QualitySettings.names.Length; i++ )
-//        {
-//            if ( QualitySettings.names[i].Equals ( Config.QualitySetting ) )
-//            {
-//                number = i;
-//            }
-//        }
-//             
-//        if ( number >= 0 )
-//        {
-//            QualitySettings.SetQualityLevel ( number );
-//        }
-//        else
-//        {
-//            Config.Log ( "quality level not supported", true );
-//            Config.Log ( "set quality level " + QualitySettings.names[0] );
-//            QualitySettings.SetQualityLevel ( 0 );
-//        }
-//    }
+////    public void SetQualityLevel ()
+////    {
+////        if ( Application.isEditor )
+////        {
+////            //Config.Log ( "keep quality level because of editor" );
+////            //Config.Log ( "current quality level " + QualitySettings.names[QualitySettings.GetQualityLevel ()] );
+////            return;
+////        }
+////
+////        if ( Config.IsStandalone )
+////        {
+////            //Config.Log ( "keep quality level because of standalone" );
+////            //Config.Log ( "current quality level " + QualitySettings.names[QualitySettings.GetQualityLevel ()] );
+////            //Config.Log ( "start application with SHIFT-Key hold down to change quality level" );
+////            return;
+////        }
+////
+////        //Config.Log ( "set quality level " + Config.QualitySetting );
+//// 
+////        int number = -1;
+////        for ( int i = 0; i < QualitySettings.names.Length; i++ )
+////        {
+////            if ( QualitySettings.names[i].Equals ( Config.QualitySetting ) )
+////            {
+////                number = i;
+////            }
+////        }
+////             
+////        if ( number >= 0 )
+////        {
+////            QualitySettings.SetQualityLevel ( number );
+////        }
+////        else
+////        {
+////            //Config.Log ( "quality level not supported", true );
+////            //Config.Log ( "set quality level " + QualitySettings.names[0] );
+////            QualitySettings.SetQualityLevel ( 0 );
+////        }
+////    }
 // 
 // 
 //    // set screnn resolution by config file
 //    // not set if started as standalone
 //    // if resolution not supported set 1024x768@60
-//    public IEnumerator SetScreenResolution ()
-//    {
-//        Resolution res = Screen.currentResolution;
-//     
-//        if ( Application.isEditor )
-//        {
-//            Config.Log ( "keep resolution because of editor" );
-//        }
-//        else if ( Config.IsStandalone () )
-//            {
-//                Config.Log ( "keep resolution because of standalone" );
-//                Config.Log ( "start application with SHIFT-Key hold down to change resolution" );
-//            }
-//     
-//        if ( Application.isEditor || Config.IsStandalone () )
-//        {
-//            Config.Log ( "current resolution " + res.width + " x " + res.height + " @ " + res.refreshRate );
-//
-//            Config.ScreenResolution.x = res.width;
-//            Config.ScreenResolution.y = res.height;
-//            Config.ScreenRefreshrate = res.refreshRate;
-//         
-//            return true;
-//        }
-// 
-//        Config.Log ( "set resolution " + Config.ScreenResolution.x + " x " + Config.ScreenResolution.y + " @ " + Config.ScreenRefreshrate );
-//        Screen.SetResolution ( Config.ScreenResolution.x, Config.ScreenResolution.y, Screen.fullScreen, Config.ScreenRefreshrate );
-//     
-//        //dan 
-//        //TODO: TEST!
-//        yield return new WaitForSeconds(0.5f);
-//     
-//        res = Screen.currentResolution;
-//        if ( Config.ScreenResolution.x != res.width || Config.ScreenResolution.y != res.height || Config.ScreenRefreshrate != res.refreshRate )
-//        {
-//            Config.Log ( "resolution not supported", true );
-//
-//            Config.ScreenResolution.x = 1024;
-//            Config.ScreenResolution.y = 768;
-//            Config.ScreenRefreshrate = 60;
-//         
-//            Config.Log ( "set resolution " + Config.ScreenResolution.x + " x " + Config.ScreenResolution.y + " @ " + Config.ScreenRefreshrate );
-//            Screen.SetResolution ( Config.ScreenResolution.x, Config.ScreenResolution.y, Screen.fullScreen, Config.ScreenRefreshrate );
-//            //dan 
-//            //TODO: TEST!
-//            yield return new WaitForSeconds(0.5f);
-//        }
-//    }
+////    public IEnumerator SetScreenResolution ()
+////    {
+////        Resolution res = Screen.currentResolution;
+////     
+////        if ( Application.isEditor )
+////        {
+////            //Config.Log ( "keep resolution because of editor" );
+////        }
+////        else if ( Config.IsStandalone )
+////            {
+////                //Config.Log ( "keep resolution because of standalone" );
+////                //Config.Log ( "start application with SHIFT-Key hold down to change resolution" );
+////            }
+////     
+////        if ( Application.isEditor || Config.IsStandalone )
+////        {
+////            //Config.Log ( "current resolution " + res.width + " x " + res.height + " @ " + res.refreshRate );
+////
+////            //Config.ScreenResolution.x = res.width;
+////            //Config.ScreenResolution.y = res.height;
+////            //Config.ScreenRefreshrate = res.refreshRate;
+////         
+////            return true;
+////        }
+//// 
+////        Config.Log ( "set resolution " + Config.ScreenResolution.x + " x " + Config.ScreenResolution.y + " @ " + Config.ScreenRefreshrate );
+////        Screen.SetResolution ( Config.ScreenResolution.x, Config.ScreenResolution.y, Screen.fullScreen, Config.ScreenRefreshrate );
+////     
+////        //dan 
+////        //TODO: TEST!
+////        yield return new WaitForSeconds(0.5f);
+////     
+////        res = Screen.currentResolution;
+////        if ( Config.ScreenResolution.x != res.width || Config.ScreenResolution.y != res.height || Config.ScreenRefreshrate != res.refreshRate )
+////        {
+////            //Config.Log ( "resolution not supported", true );
+////
+////            Config.ScreenResolution.x = 1024;
+////            Config.ScreenResolution.y = 768;
+////            Config.ScreenRefreshrate = 60;
+////         
+////            //Config.Log ( "set resolution " + //Config.ScreenResolution.x + " x " + //Config.ScreenResolution.y + " @ " + //Config.ScreenRefreshrate );
+////            Screen.SetResolution ( //Config.ScreenResolution.x, //Config.ScreenResolution.y, Screen.fullScreen, //Config.ScreenRefreshrate );
+////            //dan 
+////            //TODO: TEST!
+////            yield return new WaitForSeconds(0.5f);
+////        }
+////    }
 // 
 // 
 //    // read config file and setup all necessary data in Config
-//    public void GenerateIpData ()
+//    /*
+//	public void GenerateIpData ()
 //    {
 //        bool foundOwnData = false;
 //        try
@@ -230,16 +227,16 @@
 //        catch ( Exception e )
 //        {
 //            Console.WriteLine (e.StackTrace);
-//            Config.Log( "error loading config file, force standalone mode" );
+//            //Config.Log( "error loading config file, force standalone mode" );
 //        }   
 //        CheckIfServer ( foundOwnData );
 //        CheckIfStandalone ( foundOwnData );
-//    }
+//    }*/
 // 
 // 
 //    // read config file
 //    // iterating through Status so change order in Status-enum to change order in config file
-//    private bool LoadConfigFile ()
+//    /*private bool LoadConfigFile ()
 //    {
 //        bool found = false;
 //        StreamReader sr;
@@ -278,9 +275,9 @@
 //                    }
 //
 //                    state += 1;
-//                    Config.ScreenResolution.x = int.Parse ( parts[0] );
-//                    Config.ScreenResolution.y = int.Parse ( parts[1] );
-//                    Config.ScreenRefreshrate = int.Parse ( parts[2] );
+//                    //Config.ScreenResolution.x = int.Parse ( parts[0] );
+//                    //Config.ScreenResolution.y = int.Parse ( parts[1] );
+//                    //Config.ScreenRefreshrate = int.Parse ( parts[2] );
 //             
 //                }
 //                else if ( state == State.FindScreen )
@@ -358,7 +355,7 @@
 //        }
 //        catch ( Exception e )
 //        {
-//            Config.Log ( e.ToString (), true );
+//            //Config.Log ( e.ToString (), true );
 //        }
 //        finally
 //        {
@@ -366,7 +363,7 @@
 //        }
 //     
 //        return found;
-//    }
+//    }*/
 // 
 // 
 //    private void CheckIfServer ( bool foundOwnData )
@@ -379,7 +376,7 @@
 //        Config.IsServer = Config.OwnClientData.Ip.Equals ( Config.caveGameServerAddress );
 //        if ( Config.IsServer )
 //        {
-//            Config.LogOnScreen = true;
+//            //Config.LogOnScreen = true;
 //        }  
 //    }
 // 
@@ -393,11 +390,11 @@
 // 
 //        if ( !Application.isEditor )
 //        {
-//            Config.Log ( "this ip not supported", true );
+//            //Config.Log ( "this ip not supported", true );
 //        }
 //        else
 //        {
-//            Config.Log ( "detected editor standalone mode" );
+//            //Config.Log ( "detected editor standalone mode" );
 //        }
 //     
 //        ForceStandaloneServer ();
@@ -406,8 +403,8 @@
 // 
 //    public void ForceStandaloneServer ()
 //    {
-//        Config.Log ( "force standalone mode" );
-//        Config.Log ( "====================" );
+//        //Config.Log ( "force standalone mode" );
+//        //Config.Log ( "====================" );
 //     
 //        string ip = GetOwnIp ();
 //        Config.IsServer = true;

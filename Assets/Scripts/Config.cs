@@ -27,7 +27,16 @@ public class Config : MonoBehaviour
  	//dan
 	[HideInInspector]    public List<System.Object> ClientData;
 	[HideInInspector]    public ClientCameraInfo OwnClientData;
+	public string IpDataFile;
 	
+    [HideInInspector]    public Device InputDevice;
+	public enum Device
+    {
+        None,
+        Keyboard,
+        Xbox,
+        Spacepilot
+    };
 	
 	//TODO input devices von der iss fixen bzw entfernen
     //[HideInInspector]    public Device InputDevice;
@@ -237,6 +246,20 @@ public class Config : MonoBehaviour
 	void Awake ()
 	{
 //		logger.Debug ("config::awake start");
+		
+        IsServer = false;
+        gameStarted = false;
+		IpDataFile = "IpData.conf";
+		
+		ClientData = new List<System.Object>();
+        //NetView = networkView;
+        //StaticNetworkView = networkView;
+     
+        //WriteNewFile ( "" );
+		
+
+		
+		//6E---------------------------------------------------------------------------------------------------------
 		
 		Instance = this;
 		this.ParseCommandLine ();
