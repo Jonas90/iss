@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
  
     void FixedUpdate()
     {
-        //TODO check:
+        //TODO check: // bewegung in abhängigkeit der blickrichtung!?::
         /*
         if( !Input.GetAxis( "Horizontal" ).Equals( 0f ) )
         {

@@ -52,12 +52,12 @@ public class PlayerInteractionGame : MonoBehaviour
         {
          // can be done with every input device and also by clients
 			//dan
-			//GameController.EndGame ();
-        }
- 
-        if ( !Config.IsServer )
-        {
-            return;
+//			GameController.EndGame ();
+//        }
+// 
+//        if ( !Config.IsServer )
+//        {
+//            return;
         }
      
         CheckControllerChange ();
@@ -77,7 +77,7 @@ public class PlayerInteractionGame : MonoBehaviour
 //        {
 //            GameController.StartGame ();
 //        }
-//     
+     
 //        CheckStateChange ();
     }
  
@@ -89,7 +89,7 @@ public class PlayerInteractionGame : MonoBehaviour
 //     
 //        if ( Config.OwnClientData.ShowGuiCamera || Config.IsServer )
 //        {
-//         // top centered         - button instructions
+         // top centered         - button instructions
 //            GUI.Label ( new Rect ( Screen.width/2.0f, 40, 0, 0 ), ButtonsString, "Buttons" );
 //        }
     }
@@ -109,8 +109,8 @@ public class PlayerInteractionGame : MonoBehaviour
         //dan 
 //        if ( Config.InputDevice != Config.Device.Keyboard && OneKeyboardKeyPressed () )
 //        {
-//            
-//			Config.Log ( "change input mode from " + Config.InputDevice + " to " + Config.Device.Keyboard );
+            
+//	Config.Log ( "change input mode from " + Config.InputDevice + " to " + Config.Device.Keyboard );
 //            Config.Log ( "====================" );
 //            Config.InputDevice = Config.Device.Keyboard;
 //        }

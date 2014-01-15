@@ -39,11 +39,16 @@ public class TriggerButtonSequence : MonoBehaviour
 			Buttons.Add(new TriggerButton());
 			Debug.Log("count:"+Buttons.Count);
 			Buttons[i].SetAnimation ( animation ); // needs to be done
+			
+								
+			//NullReferenceException are thrown when you try to access a reference 
+			//variable that isnt referencing any object, hence it is null.
             Buttons[i].enabled = false;
+			
+			//Now to how to fix them: obviously the easiest way to fix them is to not have 
+			//any NullReferences. But many times thats not possible so you need to have either try-catch blocks or conditionals. 
 		}
      
-		
-		
         RPCSetCurrent ( 0 );
         Buttons[Current].SetAsStartingPoint ();
     }

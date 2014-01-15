@@ -24,7 +24,7 @@ public class TriggerEquipment : TriggerAbstract
  
     private PlayerMovement PlayerMov;
     //TODO Fix player rotation
-	//private PlayerRotation PlayerRot;
+	private PlayerRotation PlayerRot;
     private LayerSetterElement Layer;
     private EquipmentManager EquipManager;
     // =============================================================================
@@ -40,7 +40,7 @@ public class TriggerEquipment : TriggerAbstract
      
         PlayerMov = Player.GetComponent<PlayerMovement> ();
         //dan
-		//PlayerRot = Player.GetComponent<PlayerRotation> ();
+		PlayerRot = Player.GetComponent<PlayerRotation> ();
         Layer = gameObject.GetComponent<LayerSetterElement> ();
         EquipManager = GameObject.FindObjectOfType ( typeof(EquipmentManager) ) as EquipmentManager;
     }
@@ -48,7 +48,11 @@ public class TriggerEquipment : TriggerAbstract
  
     void OnMouseEnter ()
     {
-        EquipmentAtMercy atMercy = LinkedEquipment as EquipmentAtMercy;
+        //TODO check refs !
+		if(LinkedEquipment == null) return;
+		
+		EquipmentAtMercy atMercy = LinkedEquipment as EquipmentAtMercy;
+		
         if ( !LinkedEquipment.IsAvailable () && !( atMercy && atMercy.IsPotentionallyAvailable () ) )
         {
             base.OnMouseEnter ();
@@ -89,7 +93,7 @@ public class TriggerEquipment : TriggerAbstract
     private void SetPlayerMotion ( bool status )
     {
         PlayerMov.enabled = status;
-        //PlayerRot.TemporaryDisable = !status;
+        PlayerRot.TemporaryDisable = !status;
     }
 
  
