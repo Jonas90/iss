@@ -28,6 +28,7 @@ public class Config : MonoBehaviour
 	[HideInInspector]    public List<System.Object> ClientData;
 	[HideInInspector]    public ClientCameraInfo OwnClientData;
 	public string IpDataFile;
+	public bool WaitInEditorForClientsOrServer = false;
 	
     [HideInInspector]    public Device InputDevice;
 	public enum Device

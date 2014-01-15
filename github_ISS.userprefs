@@ -2,8 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ApplicationStarter.cs">
     <Files>
-      <File FileName="Assets\Scripts\ApplicationStarter.cs" Line="386" Column="1" />
-      <File FileName="Assets\Scripts\AnimationRotateAbstract.cs" Line="40" Column="1" />
+      <File FileName="Assets\Scripts\ApplicationStarter.cs" Line="72" Column="6" />
+      <File FileName="Assets\Scripts\Config.cs" Line="38" Column="19" />
+      <File FileName="Assets\Scripts\ConfigClass.cs" Line="42" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
