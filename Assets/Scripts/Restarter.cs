@@ -20,7 +20,7 @@ public class Restarter : MonoBehaviour
 
     void LateUpdate ()
     {
-        if ( !Game.Instance.IsServer )
+        if ( !GameController.Instance.IsServer )
         {
             return;
         }
@@ -63,7 +63,7 @@ public class Restarter : MonoBehaviour
     {
         try
            {
-            Game.Instance.restart ();
+            GameController.Instance.restart ();
         }
         catch ( Exception e )
         {

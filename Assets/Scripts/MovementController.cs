@@ -158,7 +158,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
             if ( Network.peerType != NetworkPeerType.Disconnected )
             {
                 //eigene rotation Senden
-                observer.SendRotate ( playerAvatar.transform.rotation, Game.Instance.IsServer );
+                observer.SendRotate ( playerAvatar.transform.rotation, GameController.Instance.IsServer );
             }
         }
 
@@ -176,7 +176,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
             if ( Network.peerType != NetworkPeerType.Disconnected )
             {
                 //eigene Position Senden
-                observer.SendPosition ( player.transform.position, Game.Instance.IsServer );
+                observer.SendPosition ( player.transform.position, GameController.Instance.IsServer );
             }
         }
     }

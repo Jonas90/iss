@@ -30,12 +30,12 @@ public class NetworkObserver : MonoBehaviour
         if ( sentByServer && Config.Instance.IsStandalone )
         {
             // Wir sind Standalone-Telepräsenzclient. Server Sendet uns seine Daten
-            Game.Instance.Client.updateRota ( playerRotation );
+            GameController.Instance.Client.updateRota ( playerRotation );
         }
-        else if ( Game.Instance.IsServer )
+        else if ( GameController.Instance.IsServer )
             {
                 // Wir sind Server und haben vom Gegenspieler Daten bekommen
-                Game.Instance.Server.updateRota ( playerRotation );
+                GameController.Instance.Server.updateRota ( playerRotation );
             }
     }
 
@@ -60,12 +60,12 @@ public class NetworkObserver : MonoBehaviour
         if ( sentByServer && Config.Instance.IsStandalone )
         {
             // Wir sind Standalone-Telepräsenzclient. Server Sendet uns seine Daten
-            Game.Instance.Client.updatePosition ( playerPosition );
+            GameController.Instance.Client.updatePosition ( playerPosition );
         }
-        else if ( Game.Instance.IsServer )
+        else if ( GameController.Instance.IsServer )
             {
                 // Wir sind Server und haben vom Gegenspieler Daten bekommen
-                Game.Instance.Server.updatePosition ( playerPosition );
+                GameController.Instance.Server.updatePosition ( playerPosition );
             }
     }
  
@@ -90,7 +90,7 @@ public class NetworkObserver : MonoBehaviour
  {
      if (Network.peerType == NetworkPeerType.Server)
      {
-         Game.Instance.Server.shoot(playerPosition, true, Force);
+         GameController.Instance.Server.shoot(playerPosition, true, Force);
      }
  }
  
@@ -107,7 +107,7 @@ public class NetworkObserver : MonoBehaviour
  {
      if (Network.peerType == NetworkPeerType.Server)
      {
-         Game.Instance.Server.switchGlobalLight();
+         GameController.Instance.Server.switchGlobalLight();
      }
  }
  /// <summary>
@@ -126,7 +126,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveShot(Vector3 startPos, Vector3 Force)
  {
-     Game.Instance.Client.spawnShot(startPos, Force);
+     GameController.Instance.Client.spawnShot(startPos, Force);
  }
  */
 
@@ -178,7 +178,7 @@ public class NetworkObserver : MonoBehaviour
     void ReceivePhysicData ( string modelName, Vector3 modelPosition, Quaternion modelRotation )
     {
 
-        Game.Instance.Client.receivePhysicData ( modelName, modelPosition, modelRotation );
+        GameController.Instance.Client.receivePhysicData ( modelName, modelPosition, modelRotation );
     }
  
     /* dan
@@ -195,7 +195,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveKillShot(string name)
  {
-     Game.Instance.Client.killShots(name);
+     GameController.Instance.Client.killShots(name);
  }
 
  /// <summary>
@@ -214,7 +214,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveLightToggle(bool roomLight, bool globalLight)
  {
-     Game.Instance.Client.actLightState(roomLight, globalLight);
+     GameController.Instance.Client.actLightState(roomLight, globalLight);
  }
  */
 
@@ -252,7 +252,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveHitEnemy(string enemyName)
  {
-     Game.Instance.Client.hitEnemy(enemyName);
+     GameController.Instance.Client.hitEnemy(enemyName);
  }
 
  /// <summary>
@@ -269,7 +269,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveHitEnemySound()
  {
-     Game.Instance.Client.hitEnemySound();
+     GameController.Instance.Client.hitEnemySound();
  }
  #endregion
 
@@ -289,7 +289,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveOpenDoor()
  {
-     Game.Instance.Client.openDoor();
+     GameController.Instance.Client.openDoor();
  }
  #endregion
 
@@ -309,7 +309,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveCloseDoor()
  {
-     Game.Instance.Client.closeDoor();
+     GameController.Instance.Client.closeDoor();
  }
  #endregion
 
@@ -329,7 +329,7 @@ public class NetworkObserver : MonoBehaviour
  [RPC]
  void ReceiveWallSound()
  {
-     Game.Instance.Client.wallSound();
+     GameController.Instance.Client.wallSound();
  }
  #endregion
  */

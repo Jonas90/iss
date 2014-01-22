@@ -7,7 +7,7 @@ using Cave;
 public class Client
 {
 
-	private Game game;
+	private GameController game;
 	private GameObject player;
 
 	private GameObject playerAvatar = null;
@@ -25,7 +25,7 @@ public class Client
 	private WiiController wiiController;
 
 
-	public Client (Game game)
+	public Client (GameController game)
 	{
 		this.game = game;
 		this.player = GameObject.Find ("Player");

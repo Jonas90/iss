@@ -11,7 +11,7 @@ public class Server
     private NetworkObserver observer;
     /* dan private ShootController shootController; */
     private WiiController wiiController;
-    private Game game;
+    private GameController game;
     private bool isStandalone;
     private Transform cameraRotationTransform;
     private KinectController kinectController;
@@ -30,7 +30,7 @@ public class Server
     //private GameObject player = null;
     //private GameObject playerAvatar = null;
 
-    public Server ( Game game, bool isStandalone )
+    public Server ( GameController game, bool isStandalone )
     {
 
         this.observer = (NetworkObserver) GameObject.FindObjectOfType ( typeof(NetworkObserver) );
