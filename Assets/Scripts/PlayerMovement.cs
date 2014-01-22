@@ -36,27 +36,27 @@ public class PlayerMovement : MonoBehaviour
  
     void FixedUpdate()
     {
-        //TODO check:
-        /*
-        if( !Input.GetAxis( "Horizontal" ).Equals( 0f ) )
-        {
-            CC.Move( Trans.right*Input.GetAxis( "Horizontal" )*Speed*Time.deltaTime );
-        }
-
-        if( !Input.GetAxis( "Vertical" ).Equals(0f) )
-        {
-            CC.Move( Trans.forward*Input.GetAxis( "Vertical" )*Speed*Time.deltaTime );
-        }
-
-        if( !Input.GetAxis( "UpDown" ).Equals(0f) )
-        {
-            CC.Move( Trans.up*Input.GetAxis( "UpDown" )*Speed*Time.deltaTime );
-        }
-        */
-        
-        CC.Move( Trans.right*Input.GetAxis( "Horizontal" )*Speed*Time.deltaTime );
-        CC.Move( Trans.forward*Input.GetAxis( "Vertical" )*Speed*Time.deltaTime );
-        CC.Move( Trans.up*Input.GetAxis( "UpDown" )*Speed*Time.deltaTime );
+//        //TODO check:
+//        
+//        if( !Input.GetAxis( "Horizontal" ).Equals( 0f ) )
+//        {
+//            CC.Move( Trans.right*Input.GetAxis( "Horizontal" )*Speed*Time.deltaTime );
+//        }
+//
+//        if( !Input.GetAxis( "Vertical" ).Equals(0f) )
+//        {
+//            CC.Move( Trans.forward*Input.GetAxis( "Vertical" )*Speed*Time.deltaTime );
+//        }
+//
+//        if( !Input.GetAxis( "UpDown" ).Equals(0f) )
+//        {
+//            CC.Move( Trans.up*Input.GetAxis( "UpDown" )*Speed*Time.deltaTime );
+//        }
+//        
+//        
+//        CC.Move( Trans.right*Input.GetAxis( "Horizontal" )*Speed*Time.deltaTime );
+//        CC.Move( Trans.forward*Input.GetAxis( "Vertical" )*Speed*Time.deltaTime );
+//        CC.Move( Trans.up*Input.GetAxis( "UpDown" )*Speed*Time.deltaTime );
 
     }
     // =============================================================================
