@@ -23,9 +23,9 @@ public class TriggerPanel : TriggerAbstract
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    protected virtual void Awake ()
+    protected virtual void Start ()
     {
-        base.Awake ();
+        base.Start ();
      
         Buttons = GetComponentsInChildren<TriggerPanelButton> ();
         Manager = FindObjectOfType ( typeof( TriggerPanelManager) ) as TriggerPanelManager;
@@ -68,9 +68,9 @@ public class TriggerPanel : TriggerAbstract
      
         // StatusLast should not be reset on server
         // because focus still on FirePort but Highlighting should be off during measurement
-        bool last = StatusLast;
+        bool last = statusLast;
         NetView.RPC ( "RPCSetStatus", RPCMode.AllBuffered, false );
-        StatusLast = last;
+        statusLast = last;
     }
  
  

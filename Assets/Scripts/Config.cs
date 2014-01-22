@@ -289,11 +289,13 @@ public class Config : MonoBehaviour
 		get
 		{
 //			logger.Debug ("CheckIfServerconfig::IsServer.get called");
-			return this.Mode == AppMode.CAVE_SERVER;
+			return (this.Mode == AppMode.CAVE_SERVER);
 		}
 		set
 		{
-			this.Mode = AppMode.CAVE_SERVER;
+			if(value)	this.Mode = AppMode.CAVE_SERVER;
+			//AppMode.renderer not checked !
+			else this.Mode = AppMode.STANDALONE;
 		}
 	}
 	

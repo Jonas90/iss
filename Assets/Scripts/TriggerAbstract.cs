@@ -32,9 +32,9 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    protected virtual void Awake ()
+    protected virtual void Start ()
     {
-        base.Awake ();
+        base.Start ();
 //dan		
 //		Button = new InteractionKey();		
 //        Button.Initialize ();
@@ -47,7 +47,7 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
     {
         base.Update ();
      
-        if ( !Config.IsServer )
+        if ( !config.IsServer )
         {
             return;
         }

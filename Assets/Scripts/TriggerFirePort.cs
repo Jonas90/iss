@@ -24,9 +24,9 @@ public class TriggerFirePort : TriggerAbstract
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------    
  
-    void Awake()
+    void Start()
     {
-        base.Awake();
+        base.Start();
      
         MeasurenentMeter = FindObjectOfType( typeof(MeterFirePort) ) as MeterFirePort;
         Extinguisher = FindObjectOfType( typeof(MeterFireExtinguisher) ) as MeterFireExtinguisher;
@@ -60,17 +60,17 @@ public class TriggerFirePort : TriggerAbstract
     {
         // StatusLast should not be reset on server
         // because focus still on FirePort but Highlighting should be off during measurement
-        bool last = StatusLast;
+        bool last = statusLast;
         NetView.RPC( "RPCSetStatus", RPCMode.AllBuffered, false );
-        StatusLast = last;
+        statusLast = last;
      
         if( MeasurenentMeter.IsEquipped() )
         {
-            MeasurenentMeter.MeasureValues( gameObject.name, Trans );
+            MeasurenentMeter.MeasureValues( gameObject.name, transform );
         }
         else if( Extinguisher.IsEquipped() )
 		{
-			Extinguisher.Extinguish( Trans );
+			Extinguisher.Extinguish( transform );
 		}
     }
     // =============================================================================

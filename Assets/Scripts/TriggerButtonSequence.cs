@@ -32,12 +32,12 @@ public class TriggerButtonSequence : MonoBehaviour
 		
         NetView = networkView;
      	
-		Debug.Log("noloop:");
+		//Debug.Log("noloop:");
 		for(int i = 0; i <= Current; i++)
 		{
-			Debug.Log("loop:"+i);
+			//Debug.Log("loop:"+i+ " / "+Current);
 			Buttons.Add(new TriggerButton());
-			Debug.Log("count:"+Buttons.Count);
+			//Debug.Log("count:"+Buttons.Count);
 			Buttons[i].SetAnimation ( animation ); // needs to be done
             Buttons[i].enabled = false;
 		}
@@ -51,10 +51,7 @@ public class TriggerButtonSequence : MonoBehaviour
  
     void Update ()
     {
-        if ( !Config.IsServer )
-        {
-            return;
-        }
+        if ( !Config.IsServer ) return;
          
         if ( IsCurrentTriggered () )
         {
@@ -70,11 +67,7 @@ public class TriggerButtonSequence : MonoBehaviour
      
     private bool IsCurrentTriggered ()
     {
-        if ( Finished || !Config.IsServer )
-        {
-            return false;
-        }
-         
+        if ( Finished || !Config.IsServer ) return false;         
         return Buttons[Current].GetIsTriggered ();
     }
  

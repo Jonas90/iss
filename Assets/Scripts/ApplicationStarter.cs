@@ -60,13 +60,13 @@ public class ApplicationStarter : MonoBehaviour
             device = Config.Device.Keyboard;
         }
         else if ( text.Equals ( "Xbox" ) )
-            {
-                device = Config.Device.Xbox;
-            }
-            else if ( text.Equals ( "Spacepilot" ) )
-                {
-                    device = Config.Device.Spacepilot;
-                }
+        {
+            device = Config.Device.Xbox;
+        }
+        else if ( text.Equals ( "Spacepilot" ) )
+        {
+            device = Config.Device.Spacepilot;
+        }
      
         return device;
     }

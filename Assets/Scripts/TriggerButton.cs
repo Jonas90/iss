@@ -17,8 +17,8 @@ public class TriggerButton : TriggerAbstract
     [SerializeField]    private AnimationClip[] AnimationClips;
     private Animation Ani;
 	
-	private bool flagAni = false;	
-	public bool enabled = false;
+	private bool flagAni;	
+	public bool enabled;
     // ============================================================================
  
  
@@ -26,9 +26,11 @@ public class TriggerButton : TriggerAbstract
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-	public TriggerButton()
+	protected virtual void Awake ()
 	{
 		HideIfInactive = false;
+		flagAni = false;	
+		enabled = false;
 	}
  
     void OnEnable ()
@@ -38,7 +40,9 @@ public class TriggerButton : TriggerAbstract
             Coll.enabled = true;
          
             foreach ( RendererData rend in Renderers )
+			{
                 rend.SetEnabled ( true );
+			}
         }
     }
  

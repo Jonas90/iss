@@ -1,6 +1,7 @@
 
 /Library
 /Temp
+/Build
 *.csproj
 *.pidb
 *.unityproj
