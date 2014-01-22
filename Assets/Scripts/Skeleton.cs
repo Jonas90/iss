@@ -39,7 +39,7 @@ public class Skeleton : MonoBehaviour, IButtonObserver<WiiMote.ButtonId>
 
     void Update ()
     {
-        if ( !Game.Instance.IsServer || !__enabled )
+        if ( !GameController.Instance.IsServer || !__enabled )
         {
             return;
         }
@@ -63,7 +63,7 @@ public class Skeleton : MonoBehaviour, IButtonObserver<WiiMote.ButtonId>
             {
                 __joints[i].renderer.enabled = __enabled;
             }
-            if ( Game.Instance.IsServer )
+            if ( GameController.Instance.IsServer )
             {
                 networkObserver.SendSkeletonEnabled ( __enabled );
             }

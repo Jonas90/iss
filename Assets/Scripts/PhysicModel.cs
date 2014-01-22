@@ -18,7 +18,7 @@ public class PhysicModel : MonoBehaviour
     /// </summary>
     void Start ()
     {
-        Game game = (Game) GameObject.FindObjectOfType ( typeof(Game) );
+        GameController game = (GameController) GameObject.FindObjectOfType ( typeof(GameController) );
         game.AddToPhysicModels ( this );
 
         this.startPosition = transform.localPosition;
@@ -58,7 +58,7 @@ public class PhysicModel : MonoBehaviour
 
     void OnDestroy ()
     {
-        Game.Instance.removeFromPhysics ( this );
+        GameController.Instance.removeFromPhysics ( this );
     }
 
 

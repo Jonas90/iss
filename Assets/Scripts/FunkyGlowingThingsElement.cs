@@ -7,6 +7,8 @@
 // player have to be in range to get shown
 // mouse have to be over object to get shown
 using UnityEngine;
+using System;
+
 
 [RequireComponent (typeof(NetworkView))] // for RPC
 
@@ -19,16 +21,16 @@ public class FunkyGlowingThingsElement : MonoBehaviour
     [SerializeField]    private bool ChangeChildMaterials = true;
     [SerializeField]    private float PlayerMinDistance = 3;
     
-    protected Config Config;
-    protected Transform Trans;
+    protected Config config;
+    protected Transform transf;
     protected RendererData[] Renderers;
     protected NetworkView NetView;
     protected Transform Player;
-    protected bool MouseInside = false;
+    protected bool MouseInside;
  
     //true: mouse MouseInside && CalculateDistance(Trans, Player) <= PlayerMinDistance;
-    protected bool Status = false;
-    protected bool StatusLast = false;
+    protected bool status;
+    protected bool statusLast;
     // =============================================================================
  
  
@@ -36,12 +38,18 @@ public class FunkyGlowingThingsElement : MonoBehaviour
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    protected virtual void Awake ()
+    protected virtual void Start ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
+        config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
+		
         Player = GameObject.FindWithTag ( "Player" ).transform;
-        Trans = transform;
+        transf = transform;
         NetView = networkView;
+		
+		MouseInside = false;
+		
+		status = false;
+    	statusLast = false;
      
         GeneratRenderersData ();
     }
@@ -49,18 +57,24 @@ public class FunkyGlowingThingsElement : MonoBehaviour
  
     protected virtual void Update ()
     {
-        if ( !Config.IsServer )
+		//Debug.Log("config.IsServer: "+config.IsServer);
+		
+		if(config == null)
+		{
+			//Debug.Log("NO CONFIG");
+			config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
+			//if(config == null) throw new Exception("NO CONFIG GO");
+		} //keine Ahnung wieso das nicht ofort in der Awake () methode gefunden wird
+		
+		if ( !config.IsServer ) return;
+		
+        this.status = MouseInside && CalculateDistance ( transf, Player ) <= PlayerMinDistance;
+        if ( status != statusLast && NetView )
         {
-            return;
-        }
-     
-        Status = MouseInside && CalculateDistance ( Trans, Player ) <= PlayerMinDistance;
-        if ( Status != StatusLast && NetView )
-        {
-            NetView.RPC ( "RPCSetStatus", RPCMode.AllBuffered, Status );
+            NetView.RPC ( "RPCSetthis.Status", RPCMode.AllBuffered, this.status );
         }
          
-        StatusLast = Status;
+        statusLast = this.status;
     }
  
  
@@ -83,7 +97,7 @@ public class FunkyGlowingThingsElement : MonoBehaviour
      
     public bool GetIsTriggered ()
     {
-        return Status;
+        return status;
     }
  
  
@@ -104,7 +118,7 @@ public class FunkyGlowingThingsElement : MonoBehaviour
         {
             childs = gameObject.GetComponents<Renderer> () as Renderer[];
         }
-     
+		
         Renderers = new RendererData[childs.Length];
         for ( int i = 0; i < childs.Length; i++ )
         {
@@ -121,16 +135,19 @@ public class FunkyGlowingThingsElement : MonoBehaviour
     [RPC]
     protected void RPCSetEnabled ( bool status )
     {
-        enabled = status;
+        //unityengine.behavior.enabled
+		base.enabled = status;
     }
  
  
     [RPC]
-    protected void RPCSetStatus ( bool status )
+    protected void RPCSetStatus ( bool newStatus )
     {
-        Status = status;
-        StatusLast = Status;
-     
+        status = newStatus;
+        statusLast = status;
+		
+//-		Debug.Log("Renderers: "+Renderers+" len: "+Renderers.Length);
+		
         foreach ( RendererData rend in Renderers )
 		{
             rend.SetMaterials ( status );

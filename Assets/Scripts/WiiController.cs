@@ -34,7 +34,7 @@ public class WiiController : MonoBehaviour
     void Update ()
     {
         try
-              {
+        {
             if ( Config.Instance.UseWii )
             {
                 WiiMote.update ();

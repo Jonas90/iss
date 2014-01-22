@@ -1,11 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ApplicationStarter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FunkyGlowingThingsElement.cs">
     <Files>
-      <File FileName="Assets\Scripts\ApplicationStarter.cs" Line="72" Column="6" />
-      <File FileName="Assets\Scripts\Config.cs" Line="38" Column="19" />
-      <File FileName="Assets\Scripts\ConfigClass.cs" Line="42" Column="3" />
+      <File FileName="Assets\Scripts\FunkyGlowingThingsElement.cs" Line="149" Column="4" />
+      <File FileName="Assets\Scripts\TriggerHatch.cs" Line="105" Column="76" />
+      <File FileName="Assets\Scripts\Config.cs" Line="251" Column="25" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -34,9 +34,9 @@ public class TriggerEquipment : TriggerAbstract
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    void Awake ()
+    void Start ()
     {
-        base.Awake ();
+        base.Start ();
      
         PlayerMov = Player.GetComponent<PlayerMovement> ();
         //dan
@@ -118,7 +118,7 @@ public class TriggerEquipment : TriggerAbstract
         parms.Prop ( "localScale", new PlugVector3 ( tweenTarget.localScale ) );
         parms.Ease ( EaseType.EaseInOutSine );
      
-        HOTween.To ( Trans, TakeAnimationLength, parms );
+        HOTween.To ( transform, TakeAnimationLength, parms );
 
         //dan
         //TODO

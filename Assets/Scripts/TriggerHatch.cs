@@ -23,17 +23,17 @@ public class TriggerHatch : MonoBehaviour
         PermanentOpen,
         PermanentClosed
     }
+	public TriggerType Type;
 
     public enum TriggerObject
     {
         DistanceByCollider,
         Script
     }
+	public TriggerObject Trigger;
  
 	private bool IsInit;
-    public TriggerType Type;
-    public TriggerObject Trigger;
-	
+   
     private Animation Ani;
 	public int AnimationsOpenSize;
     public int AnimationsCloseSize;
@@ -56,7 +56,7 @@ public class TriggerHatch : MonoBehaviour
     #region METHODS UNITY ---------------------------------------------------------------
  
 	void Awake()
-	{
+	{		
 		Type = TriggerType.PermanentClosed;
 		Trigger = TriggerObject.Script;
 		
@@ -68,35 +68,31 @@ public class TriggerHatch : MonoBehaviour
 		Config = GameObject.FindWithTag( "Config" ).GetComponent<Config>();
         Ani = animation;
         NetView = networkView;
-     
-		Debug.Log(typeof(Config));
-		Debug.Log(Config);
 		
         if( !Config.IsServer )
         {
             IsInit = true;
+			Debug.Log("TriggerHatch: not Server");
             return;
         }
      
         if( Type == TriggerType.Trigger )
         {
-            IsInit = true;
+            Debug.Log("TriggerHatch: Type == TriggerType.Trigger");
+			IsInit = true;
         }
-
+		
         if( Trigger == TriggerObject.Script )
         {
 			Script = GetComponent<TriggerButtonSequence>();
         }
-		
 	} 
  
     void Update()
     { 
-        if( !Config.IsServer )
-        {
-            return;
-        }
-         
+        if( !Config.IsServer ) return;
+		
+		Debug.Log("TriggerHatch: Config.gameStarted: "+Config.gameStarted);
         if( !IsInit && Config.gameStarted )
         {
             MakePermanent();
