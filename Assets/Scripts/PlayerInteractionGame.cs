@@ -40,10 +40,14 @@ public class PlayerInteractionGame : MonoBehaviour
 //dan
 		
 		Debug.Log(">>>>>PlayerInteractionGame_Awake");
+		GameController = GameController.Instance;
         LastState = GameController.GetState ();
      
+		ButtonStart = new InteractionKey();
         ButtonStart.Initialize ();
+		ButtonReset = new InteractionKey();
         ButtonReset.Initialize ();
+		ButtonStop = new InteractionKey();
         ButtonStop.Initialize ();
 		
 		
