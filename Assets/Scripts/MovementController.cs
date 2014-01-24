@@ -10,6 +10,8 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
     private float walkVelocityMeterPerSec = 0f;
     private float turnVelocityDegPerSec = 0f;
+    private float upVelocityDegPerSec = 0f;
+    private float rollVelocityDegPerSec = 0f;
     private WiiController wiiController;
     private KinectController kinectController;
     private GameObject player;
@@ -162,6 +164,16 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
             }
         }
 
+        if (upVelocityDegPerSec != 0.0f)
+        {
+            player.transform.Rotate(Vector3.right, upVelocityDegPerSec * Time.deltaTime);
+        }
+
+        if (rollVelocityDegPerSec != 0.0f)
+        {
+            player.transform.Rotate(Vector3.forward, rollVelocityDegPerSec * Time.deltaTime);
+        }
+
         if ( walkVelocityMeterPerSec != 0 )
         {
             if ( Config.Instance.UseKinect )
@@ -201,6 +213,24 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
             this.turnVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            this.upVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            this.upVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+        }
+
         if ( Input.GetKeyUp ( Config.Instance.keyboardButtonForward ) || Input.GetKeyUp ( Config.Instance.keyboardButtonBackward ) )
         {
             this.walkVelocityMeterPerSec = 0f;
@@ -208,6 +238,16 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
         if ( Input.GetKeyUp ( Config.Instance.keyboardButtonLeft ) || Input.GetKeyUp ( Config.Instance.keyboardButtonRight ) )
         {
             this.turnVelocityDegPerSec = 0f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.E))
+        {
+            this.upVelocityDegPerSec = 0f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Y) || Input.GetKeyUp(KeyCode.C))
+        {
+            this.rollVelocityDegPerSec = 0f;
         }
     }
 
@@ -217,6 +257,76 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
         if ( Config.Instance.UseWii && wiiController.WiiMote.getButtonState ( WiiMote.ButtonId.PLUS ) == ButtonState.TOGGLE_DOWN )
         {
             ToggleNav ();
+        }
+
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_DOWN)
+        {
+            this.walkVelocityMeterPerSec = this.defaultWalkVelocityMeterPerSec;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_DOWN)
+        {
+            this.walkVelocityMeterPerSec = -this.defaultWalkVelocityMeterPerSec;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_DOWN)
+        {
+            this.turnVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_DOWN)
+        {
+            this.turnVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+        }
+
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_DOWN)
+        {
+            this.upVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_DOWN)
+        {
+            this.upVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+        }
+
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_DOWN)
+        {
+            this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_DOWN)
+        {
+            this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+        }
+
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_UP)
+        {
+            this.walkVelocityMeterPerSec = 0f;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_UP)
+        {
+            this.walkVelocityMeterPerSec = 0f;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_UP)
+        {
+            this.turnVelocityDegPerSec = 0f;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_UP)
+        {
+            this.turnVelocityDegPerSec = 0f;
+        }
+
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_UP)
+        {
+            this.upVelocityDegPerSec = 0f;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_UP)
+        {
+            this.upVelocityDegPerSec = 0f;
+        }
+
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_UP)
+        {
+            this.rollVelocityDegPerSec = 0f;
+        }
+        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_UP)
+        {
+            this.rollVelocityDegPerSec = 0f;
         }
     }
 
@@ -233,6 +343,18 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
         this.turnVelocityDegPerSec = vel[1]*Mathf.Rad2Deg;
     }
 
+    public void setTargetUpVelocity(Vec3f vel)
+    {
+        // RedirectToFrontNavigationMediator in Radiant, WiiTurnNavigationMediator auch
+        this.upVelocityDegPerSec = vel[1] * Mathf.Rad2Deg;
+    }
+
+    public void setTargetRollVelocity(Vec3f vel)
+    {
+        // RedirectToFrontNavigationMediator in Radiant, WiiTurnNavigationMediator auch
+        this.rollVelocityDegPerSec = vel[1] * Mathf.Rad2Deg;
+    }
+
 
     public Vec3f getVelocity ()
     {
@@ -243,5 +365,15 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
     public Vec3f getTurnVelocity ()
     {
         return new Vec3f ( 0f, this.turnVelocityDegPerSec*Mathf.Deg2Rad, 0f );
+    }
+
+    public Vec3f getUpVelocity()
+    {
+        return new Vec3f(0f, this.upVelocityDegPerSec * Mathf.Deg2Rad, 0f);
+    }
+
+    public Vec3f getRollVelocity()
+    {
+        return new Vec3f(0f, this.rollVelocityDegPerSec * Mathf.Deg2Rad, 0f);
     }
 }

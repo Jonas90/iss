@@ -39,11 +39,14 @@ public class PlayerInteractionGame : MonoBehaviour
         NetView = networkView;
 //dan
 		
+		Debug.Log(">>>>>PlayerInteractionGame_Awake");
         LastState = GameController.GetState ();
      
         ButtonStart.Initialize ();
         ButtonReset.Initialize ();
         ButtonStop.Initialize ();
+		
+		
    
 	}
  
@@ -87,13 +90,13 @@ public class PlayerInteractionGame : MonoBehaviour
     void OnGUI ()
     {
 //dan
-        GUI.skin = Config.InterfaceSkin;
-     
-        if ( Config.OwnClientData.ShowGuiCamera || Config.IsServer )
-        {
-         // top centered         - button instructions
-            GUI.Label ( new Rect ( Screen.width/2.0f, 40, 0, 0 ), ButtonsString, "Buttons" );
-        }
+//        GUI.skin = Config.InterfaceSkin;
+//     
+//        if ( Config.OwnClientData.ShowGuiCamera || Config.IsServer )
+//        {
+//         // top centered         - button instructions
+//            GUI.Label ( new Rect ( Screen.width/2.0f, 40, 0, 0 ), ButtonsString, "Buttons" );
+//        }
     }
     // =============================================================================
  
@@ -112,8 +115,8 @@ public class PlayerInteractionGame : MonoBehaviour
         if ( Config.InputDevice != Config.Device.Keyboard && OneKeyboardKeyPressed () )
         {
             
-			Config.Log ( "change input mode from " + Config.InputDevice + " to " + Config.Device.Keyboard );
-            Config.Log ( "====================" );
+//			Config.Log ( "change input mode from " + Config.InputDevice + " to " + Config.Device.Keyboard );
+//          Config.Log ( "====================" );
             Config.InputDevice = Config.Device.Keyboard;
         }
     }

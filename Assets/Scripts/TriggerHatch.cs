@@ -57,7 +57,7 @@ public class TriggerHatch : MonoBehaviour
  
 	void Awake()
 	{		
-		Type = TriggerType.PermanentClosed;
+		Type = TriggerType.PermanentOpen;
 		Trigger = TriggerObject.Script;
 		
 		AnimationsOpenSize = 1;
@@ -68,22 +68,26 @@ public class TriggerHatch : MonoBehaviour
 		Config = GameObject.FindWithTag( "Config" ).GetComponent<Config>();
         Ani = animation;
         NetView = networkView;
-		
-        if( !Config.IsServer )
+	}
+	
+	void Start()
+	{
+		if( !Config.IsServer && !Config.IsStandalone)
         {
             IsInit = true;
-			Debug.Log("TriggerHatch: not Server");
+			Debug.Log("------TriggerHatch: not Server");
             return;
         }
      
         if( Type == TriggerType.Trigger )
         {
-            Debug.Log("TriggerHatch: Type == TriggerType.Trigger");
+            Debug.Log("-----TriggerHatch: Type == TriggerType.Trigger");
 			IsInit = true;
         }
 		
         if( Trigger == TriggerObject.Script )
         {
+			Debug.Log("-----TriggerHatch: Trigger == TriggerObject.Script");
 			Script = GetComponent<TriggerButtonSequence>();
         }
 	} 
@@ -133,10 +137,7 @@ public class TriggerHatch : MonoBehaviour
     {
         IsInit = true;
      
-        if( Type == TriggerType.PermanentOpen )
-        {
-            Open();
-        }
+        if( Type == TriggerType.PermanentOpen ) Open();
         else if( Type == TriggerType.InstantOpen )
         {
             NetView.RPC( "RPCAnimateInstant", RPCMode.AllBuffered, true );

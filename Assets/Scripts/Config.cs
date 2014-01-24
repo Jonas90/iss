@@ -246,7 +246,7 @@ public class Config : MonoBehaviour
 
 	void Awake ()
 	{
-//		logger.Debug ("config::awake start");
+		Debug.Log ("config::Awake start");
 		
         IsServer = false;
         gameStarted = false;
@@ -271,7 +271,7 @@ public class Config : MonoBehaviour
 			Screen.showCursor = false;
 		}
 		
-//		logger.Debug ("config::awake end");
+		Debug.Log ("config::Awake end");
 	}
 
 	public bool IsStandalone

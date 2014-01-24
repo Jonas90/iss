@@ -34,7 +34,9 @@ public class ApplicationStarter : MonoBehaviour
  
     void Awake ()
     {
-        Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
+        Debug.Log("ApplicationStarter::Awake start");
+		Config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
+		Debug.Log("ApplicationStarter::Awake end");
     }
     // =============================================================================
  
@@ -45,7 +47,9 @@ public class ApplicationStarter : MonoBehaviour
  
     private static string GetOwnIp ()
     {
-        string strHostName = System.Net.Dns.GetHostName ();
+        Debug.Log("ApplicationStarter::GetOwnIp start");
+		
+		string strHostName = System.Net.Dns.GetHostName ();
         IPAddress[] ips = System.Net.Dns.GetHostAddresses ( strHostName );
         return ips[0].ToString (); // just get first ip
     }
@@ -53,7 +57,9 @@ public class ApplicationStarter : MonoBehaviour
  	
     private static Config.Device ParseInputDevice ( string text )
     {
-        Config.Device device = Config.Device.None;
+        Debug.Log("ApplicationStarter::ParseInputDevice start");
+		
+		Config.Device device = Config.Device.None;
      
         if ( text.Equals ( "Keyboard" ) )
         {
@@ -75,7 +81,8 @@ public class ApplicationStarter : MonoBehaviour
     // must be called on all clients to avoid collision detection (should only be done on server)
     public static void DestroyAllPhysics ()
     {
-
+		Debug.Log("ApplicationStarter::DestroyAllPhysics start");
+		
         Rigidbody[] allRigids = FindObjectsOfType( typeof(Rigidbody) ) as Rigidbody[];
 
 
@@ -97,7 +104,9 @@ public class ApplicationStarter : MonoBehaviour
     // sound only on server
     public static void DestroyAllAudio ()
     {
-        AudioSource[] allSources = FindObjectsOfType ( typeof(AudioSource) ) as AudioSource[];
+        Debug.Log("ApplicationStarter::DestroyAllAudio start");
+		
+		AudioSource[] allSources = FindObjectsOfType ( typeof(AudioSource) ) as AudioSource[];
         //Config.Log ( "destroy " + allSources.Length + " audio sources" );
         foreach ( AudioSource source in allSources )
         {
@@ -368,7 +377,9 @@ public class ApplicationStarter : MonoBehaviour
  
     private void CheckIfServer ( bool foundOwnData )
     {
-        if ( !foundOwnData )
+       Debug.Log("ApplicationStarter::CheckIfServer start");
+		
+		if ( !foundOwnData )
         {
             return;
         }
@@ -383,7 +394,9 @@ public class ApplicationStarter : MonoBehaviour
  
     private void CheckIfStandalone ( bool foundOwnData )
     {
-        if ( foundOwnData || ( Application.isEditor && Config.WaitInEditorForClientsOrServer ) )
+       Debug.Log("ApplicationStarter::CheckIfStandalone start");
+		
+		if ( foundOwnData || ( Application.isEditor && Config.WaitInEditorForClientsOrServer ) )
         {
             return;
         }
@@ -403,7 +416,9 @@ public class ApplicationStarter : MonoBehaviour
  
     public void ForceStandaloneServer ()
     {
-        //Config.Log ( "force standalone mode" );
+        Debug.Log("ApplicationStarter::ForceStandaloneServer start");
+		
+		//Config.Log ( "force standalone mode" );
         //Config.Log ( "====================" );
      
         string ip = GetOwnIp ();

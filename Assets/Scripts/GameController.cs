@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour {
 	private Config Config;
 	//private NetworkView NetView;
 	private PlayerMovement NavTrans;
-//private PlayerRotation NavRot;
+	private PlayerRotation NavRot;
 	
 	private static GameState State;  
 	// =============================================================================
@@ -55,19 +55,27 @@ public class GameController : MonoBehaviour {
 	
 	// start reading data from config file by GameStarter
 	void Awake() {
+		
+        Config = GameObject.FindWithTag("Config").GetComponent<Config>();
+		Player = GameObject.FindWithTag("Player");//.GetComponent<GameObject>();
+		
+		
 		Instance = this; //Zeile aus 6. Etage
 		//Config.Log("====================");
 		//Config.Log("awake");
 		
-		Config = GameObject.FindWithTag("Config").GetComponent<Config>();
+		
 		//NetView = networkView;
 		
 		//Player = GameObject.FindWithTag("Player").GetComponent<Player>();
-		Player = GameObject.FindWithTag("Player");//.GetComponent<GameObject>();
+		
+		
+		
 		
 		//Config.Log("====================");
 		//ApplicationStarter.GenerateIpData();
 		//Config.OwnClientDataToString();
+		Debug.Log(">>>>>GameController_Awake: "+State);
 	}
 	
 	
@@ -78,7 +86,9 @@ public class GameController : MonoBehaviour {
 //--------HelmholzEnde-----------------------------------------------
 //       fileLog.Write ("i Game:Start start");
         // if we are using cluster-rendering we need to setup the newtork connections
-        switch( Config.Instance.Mode )
+		
+		
+		switch( Config.Instance.Mode )
         {
             case Config.AppMode.CAVE_SERVER:
                 Logger.Log( "THIS IS Bond, SERVER Bond" );
@@ -103,7 +113,7 @@ public class GameController : MonoBehaviour {
 //--------HelmholzStart-----------------------------------------------
 		//NavTrans = Player.GetComponent<PlayerMovement>();
 		//NavRot = Player.GetComponent<PlayerRotation>();
-		//NavTrans.enabled = false;
+		////NavTrans.enabled = false;
 		//NavRot.enabled = false;
 		
 		//Config.Log("====================");
@@ -112,7 +122,11 @@ public class GameController : MonoBehaviour {
 		//Config.Log("====================");
 		//StartCoroutine(ApplicationStarter.SetScreenResolution());
 		
+		State = GameState.WaitForClientsSERVERONLY;
+		
 		StartApplication();
+		
+		Debug.Log(">>>>>GameController_Start: "+State);
 	}
 
 //--------HelmholzEnde-----------------------------------------------
@@ -267,6 +281,7 @@ public class GameController : MonoBehaviour {
 	void OnServerInitialized(){
 		//if (!Config.IsStandalone())
 			//Config.Log("waiting for clients");
+		
 		State = GameState.WaitForClientsSERVERONLY;
 		
 		//Config.ConnectedClientNumber++;
@@ -323,7 +338,8 @@ public class GameController : MonoBehaviour {
 	// =============================================================================
 	// METHODS  --------------------------------------------------------------------
 	
-	private void StartApplication() {
+	private void StartApplication() 
+	{
 		//Config.Log("====================");
 		ClientCameraController.SetAllTransforms(Player);
 		
@@ -358,9 +374,10 @@ public class GameController : MonoBehaviour {
 	
 	
 	private void CheckStartGame() {
-		//if (Config.ConnectedClientNumber == Config.ClientData.Count) {
-		//	State = GameState.WaitForFirstStart;
-		//}
+//		if (Config.ConnectedClientNumber == Config.ClientData.Count) 
+//		{
+//			State = GameState.WaitForFirstStart;
+//		}
 	}
 	
 	
