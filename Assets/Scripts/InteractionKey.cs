@@ -34,7 +34,16 @@ public class InteractionKey : System.Object
     private Config Config;
     // =============================================================================
 
-
+	public InteractionKey() {
+	}
+	
+	public InteractionKey(MouseKey ButtonMouse, string ButtonKeyboard, string ButtonXbox, string ButtonSpacepilot) {
+		this.ButtonMouse = ButtonMouse;
+		this.ButtonKeyboard = ButtonKeyboard;
+		this.ButtonXbox = ButtonXbox;
+		this.ButtonSpacepilot = ButtonSpacepilot;
+	}
+	
 
     // =============================================================================
     // METHODS  --------------------------------------------------------------------

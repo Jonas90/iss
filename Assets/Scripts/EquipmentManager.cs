@@ -96,6 +96,7 @@ public class EquipmentManager : MonoBehaviour
 
     public void Take ( Equipment equipment )
     {
+		Debug.Log ("----- is in EquipmentManager -> Take (Equipment equipment):"+equipment);
         if ( !equipment )
         {
             return;

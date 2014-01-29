@@ -43,15 +43,12 @@ public class PlayerInteractionGame : MonoBehaviour
 		GameController = GameController.Instance;
         LastState = GameController.GetState ();
      
-		ButtonStart = new InteractionKey();
+		ButtonStart = new InteractionKey(InteractionKey.MouseKey.Right, "[0]", "START" , "(1)");
         ButtonStart.Initialize ();
-		ButtonReset = new InteractionKey();
+		ButtonReset = new InteractionKey(InteractionKey.MouseKey.None, "[0]", "START" , "(1)");
         ButtonReset.Initialize ();
-		ButtonStop = new InteractionKey();
+		ButtonStop = new InteractionKey(InteractionKey.MouseKey.None, "[1]", "BACK" , "(2)");
         ButtonStop.Initialize ();
-		
-		
-   
 	}
  
  

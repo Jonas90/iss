@@ -59,12 +59,6 @@ public class TriggerHatch : MonoBehaviour
 	{		
 		Type = TriggerType.PermanentOpen;
 		Trigger = TriggerObject.Script;
-		
-		AnimationsOpenSize = 1;
-        AnimationsCloseSize = 1;
-		AnimationsOpen = new AnimationClip[AnimationsOpenSize];
-        AnimationsClose = new AnimationClip[AnimationsCloseSize];
-		
 		Config = GameObject.FindWithTag( "Config" ).GetComponent<Config>();
         Ani = animation;
         NetView = networkView;
@@ -75,21 +69,20 @@ public class TriggerHatch : MonoBehaviour
 		if( !Config.IsServer && !Config.IsStandalone)
         {
             IsInit = true;
-			Debug.Log("------TriggerHatch: not Server");
             return;
         }
      
         if( Type == TriggerType.Trigger )
         {
-            Debug.Log("-----TriggerHatch: Type == TriggerType.Trigger");
 			IsInit = true;
         }
 		
         if( Trigger == TriggerObject.Script )
         {
-			Debug.Log("-----TriggerHatch: Trigger == TriggerObject.Script");
 			Script = GetComponent<TriggerButtonSequence>();
         }
+		//OnTriggerEnter(null);
+		
 	} 
  
     void Update()
@@ -106,23 +99,35 @@ public class TriggerHatch : MonoBehaviour
  
     void OnTriggerEnter( Collider other )
     {
-        if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
-        {
-            return;
-        } 
-             
-        Open();
+		if (Config.IsStandalone && other.tag.Equals("Player")) {
+			RPCAnimate(true);
+		}
+		else if (Config.IsServer){
+			Open ();
+		}
+        //if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
+        //{
+        //    return;
+        //}
+		//else
+	    //    Open();
     }
  
  
     void OnTriggerExit( Collider other )
     {
-        if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
-        {
-            return;
-        }
+		if (Config.IsStandalone && other.tag.Equals("Player")) {
+			RPCAnimate(false);
+		}
+		else if (Config.IsServer){
+			Close ();
+		}
+        //if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
+        //{
+        ///    return;
+       // }
          
-        Close();
+        //Close();
     }
 
     #endregion
@@ -140,20 +145,20 @@ public class TriggerHatch : MonoBehaviour
         if( Type == TriggerType.PermanentOpen ) Open();
         else if( Type == TriggerType.InstantOpen )
         {
-            NetView.RPC( "RPCAnimateInstant", RPCMode.AllBuffered, true );
+            NetView.RPC( "RPCAnimateInstant", RPCMode.All, true );
         }
     }
  
  
     private void Open()
     {
-        NetView.RPC( "RPCAnimate", RPCMode.AllBuffered, true );
+        networkView.RPC( "RPCAnimate", RPCMode.All, true );
     }
  
  
     private void Close()
     {
-        NetView.RPC( "RPCAnimate", RPCMode.AllBuffered, false );
+        NetView.RPC( "RPCAnimate", RPCMode.All, false );
     }
     // =============================================================================
  
@@ -167,8 +172,9 @@ public class TriggerHatch : MonoBehaviour
     {
         if( open )
         {
-            foreach( AnimationClip clip in AnimationsOpen )
+            foreach( AnimationClip clip in AnimationsOpen ) {
                 Ani.PlayQueued( clip.name );
+			}
         }
         else
         {
@@ -183,11 +189,11 @@ public class TriggerHatch : MonoBehaviour
     {
         if( open )
         {
-            Ani.Play( AnimationsOpen[AnimationsOpen.Length - 1].name );
+            Ani.Play( AnimationsOpen[0].name );
         }
         else
         {
-            Ani.Play( AnimationsClose[AnimationsClose.Length - 1].name );
+            Ani.Play( AnimationsClose[0].name );
         }
     }
     // =============================================================================

@@ -23,9 +23,9 @@ public class TriggerPanel : TriggerAbstract
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    protected virtual void Start ()
+    protected virtual void Awake ()
     {
-        base.Start ();
+        base.Awake ();
      
         Buttons = GetComponentsInChildren<TriggerPanelButton> ();
         Manager = FindObjectOfType ( typeof( TriggerPanelManager) ) as TriggerPanelManager;
