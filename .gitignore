@@ -4,7 +4,6 @@
 /Build
 *.csproj
 *.pidb
-*.unityproj
 *.sln
 *.userprefs
 *.cs~
