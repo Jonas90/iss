@@ -254,80 +254,85 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
     void Update ()
     {
-        if ( Config.Instance.UseWii && wiiController.WiiMote.getButtonState ( WiiMote.ButtonId.PLUS ) == ButtonState.TOGGLE_DOWN )
-        {
-            ToggleNav ();
-        }
+        if ( Config.Instance.UseWii)
+		{
+			if  (wiiController.WiiMote.getButtonState ( WiiMote.ButtonId.PLUS ) == ButtonState.TOGGLE_DOWN )
+			{
+				ToggleNav ();
+			}
 
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_DOWN)
-        {
-            this.walkVelocityMeterPerSec = this.defaultWalkVelocityMeterPerSec;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_DOWN)
-        {
-            this.walkVelocityMeterPerSec = -this.defaultWalkVelocityMeterPerSec;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_DOWN)
-        {
-            this.turnVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_DOWN)
-        {
-            this.turnVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
-        }
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_DOWN)
+			{
+				this.walkVelocityMeterPerSec = this.defaultWalkVelocityMeterPerSec;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_DOWN)
+			{
+				this.walkVelocityMeterPerSec = -this.defaultWalkVelocityMeterPerSec;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_DOWN)
+			{
+				this.turnVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_DOWN)
+			{
+				this.turnVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+			}
 
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_DOWN)
-        {
-            this.upVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_DOWN)
-        {
-            this.upVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
-        }
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_DOWN)
+			{
+				this.upVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_DOWN)
+			{
+				this.upVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+			}
 
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_DOWN)
-        {
-            this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_DOWN)
-        {
-            this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
-        }
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_DOWN)
+			{
+				this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_DOWN)
+			{
+				this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+			}
 
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_UP)
-        {
-            this.walkVelocityMeterPerSec = 0f;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_UP)
-        {
-            this.walkVelocityMeterPerSec = 0f;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_UP)
-        {
-            this.turnVelocityDegPerSec = 0f;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_UP)
-        {
-            this.turnVelocityDegPerSec = 0f;
-        }
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_UP)
+			{
+				this.walkVelocityMeterPerSec = 0f;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_UP)
+			{
+				this.walkVelocityMeterPerSec = 0f;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_UP)
+			{
+				this.turnVelocityDegPerSec = 0f;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_UP)
+			{
+				this.turnVelocityDegPerSec = 0f;
+			}
 
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_UP)
-        {
-            this.upVelocityDegPerSec = 0f;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_UP)
-        {
-            this.upVelocityDegPerSec = 0f;
-        }
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_UP)
+			{
+				this.upVelocityDegPerSec = 0f;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_UP)
+			{
+				this.upVelocityDegPerSec = 0f;
+			}
 
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_UP)
-        {
-            this.rollVelocityDegPerSec = 0f;
-        }
-        if (Config.Instance.UseWii && wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_UP)
-        {
-            this.rollVelocityDegPerSec = 0f;
-        }
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_UP)
+			{
+				this.rollVelocityDegPerSec = 0f;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_UP)
+			{
+				this.rollVelocityDegPerSec = 0f;
+			}
+		}
+		
+		
     }
 
 
