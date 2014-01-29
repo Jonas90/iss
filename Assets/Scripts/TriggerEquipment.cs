@@ -34,15 +34,15 @@ public class TriggerEquipment : TriggerAbstract
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    void Start ()
+    void Awake ()
     {
-        base.Start ();
+        base.Awake ();
      
         PlayerMov = Player.GetComponent<PlayerMovement> ();
         //dan
 		//PlayerRot = Player.GetComponent<PlayerRotation> ();
         Layer = gameObject.GetComponent<LayerSetterElement> ();
-        EquipManager = GameObject.FindObjectOfType ( typeof(EquipmentManager) ) as EquipmentManager;
+        EquipManager = GameObject.FindObjectOfType ( typeof(EquipmentManager) ) as EquipmentManager; // = NULL !!! Da "Equiptment" vom Player aus dem ISS-Projekt nicht übernommen wurde.
     }
  
  

@@ -24,9 +24,9 @@ public class TriggerFirePort : TriggerAbstract
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------    
  
-    void Start()
+    void Awake()
     {
-        base.Start();
+        base.Awake();
      
         MeasurenentMeter = FindObjectOfType( typeof(MeterFirePort) ) as MeterFirePort;
         Extinguisher = FindObjectOfType( typeof(MeterFireExtinguisher) ) as MeterFireExtinguisher;

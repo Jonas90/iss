@@ -38,7 +38,7 @@ public class FunkyGlowingThingsElement : MonoBehaviour
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    protected virtual void Start ()
+    protected virtual void Awake ()
     {
         config = GameObject.FindWithTag ( "Config" ).GetComponent<Config> ();
 		

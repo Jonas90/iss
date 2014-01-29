@@ -14,11 +14,11 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
 
     // =============================================================================
     // MEMBERS ---------------------------------------------------------------------
-    [SerializeField]    protected HoveringText HoverText; // optional
-    [SerializeField]    protected Vector3 HoverTextOffset; // optional
+    //[SerializeField]    protected HoveringText HoverText; // optional
+    //[SerializeField]    protected Vector3 HoverTextOffset; // optional
 	//dan
 	//TODO: fix keys
-	//    [SerializeField]    protected InteractionKey Button; // optional
+	[SerializeField]    protected InteractionKey Button; // optional
     [SerializeField]    protected string ObjectDescription; // optional
  
     protected Collider Coll;
@@ -26,18 +26,18 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
  
 	public TriggerAbstract()
 	{
-		HoverTextOffset = new Vector3 ( 0f, 0f, -0.15f );
+		//HoverTextOffset = new Vector3 ( 0f, 0f, -0.15f );
 	}
  
     // =============================================================================
     // METHODS UNITY ---------------------------------------------------------------
  
-    protected virtual void Start ()
+    protected virtual void Awake ()
     {
-        base.Start ();
+        base.Awake ();
 //dan		
-//		Button = new InteractionKey();		
-//        Button.Initialize ();
+		Button = new InteractionKey(InteractionKey.MouseKey.Left, "[7]", "A", "");		
+        Button.Initialize ();
      
         Coll = collider;
     }
@@ -63,10 +63,10 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
     {
         base.RPCSetStatus ( false );
      
-        if ( HoverText )
-        {
-            HoverText.Hide ();
-        }
+        //if ( HoverText )
+        //{
+        //    HoverText.Hide ();
+        //}
     }
     // =============================================================================
  
@@ -79,15 +79,16 @@ public /*abstract*/ class TriggerAbstract : FunkyGlowingThingsElement
     {
         //dan
 		//todo
-		//return base.GetIsTriggered () && Button.GetButtonDown ();
-		return base.GetIsTriggered();
+		return base.GetIsTriggered () && Button.GetButtonDown ();
+		//return base.GetIsTriggered();
     }
  
  
     // for override
     protected void DoTrigger ()
     {
-        NetView.RPC ( "RPCDoTrigger", RPCMode.AllBuffered );
+        //NetView.RPC ( "RPCDoTrigger", RPCMode.AllBuffered );
+        NetView.RPC ( "RPCDoTrigger", RPCMode.All );
     }
     // =============================================================================
  

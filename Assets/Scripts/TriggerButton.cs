@@ -28,6 +28,7 @@ public class TriggerButton : TriggerAbstract
  
 	protected virtual void Awake ()
 	{
+		base.Awake();
 		HideIfInactive = false;
 		flagAni = false;	
 		enabled = false;
