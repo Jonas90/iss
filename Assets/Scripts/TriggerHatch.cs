@@ -87,9 +87,9 @@ public class TriggerHatch : MonoBehaviour
  
     void Update()
     { 
-        if( !Config.IsServer ) return;
-		
-		//Debug.Log("TriggerHatch: Config.gameStarted: "+Config.gameStarted);
+        if( !Config.IsServer )
+			return;
+			
         if( !IsInit && Config.gameStarted )
         {
             MakePermanent();
