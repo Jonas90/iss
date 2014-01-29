@@ -89,7 +89,6 @@ public class TriggerHatch : MonoBehaviour
     { 
         if( !Config.IsServer ) return;
 		
-		Debug.Log("TriggerHatch: Config.gameStarted: "+Config.gameStarted);
         if( !IsInit && Config.gameStarted )
         {
             MakePermanent();
