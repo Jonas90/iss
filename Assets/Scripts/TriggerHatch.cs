@@ -40,6 +40,9 @@ public class TriggerHatch : MonoBehaviour
     public AnimationClip[] AnimationsOpen;
     public AnimationClip[] AnimationsClose;
 	
+	
+	private bool IsClose = true;
+	
 
     
     #endregion
@@ -99,11 +102,15 @@ public class TriggerHatch : MonoBehaviour
  
     void OnTriggerEnter( Collider other )
     {
-		if (Config.IsStandalone && other.tag.Equals("Player")) {
-			RPCAnimate(true);
-		}
-		else if (Config.IsServer){
-			Open ();
+		if (IsClose)
+		{
+			if (Config.IsStandalone && other.tag.Equals("Player")) {
+				RPCAnimate(true);
+			}
+			else if (Config.IsServer){
+				Open ();
+			}
+			IsClose = false;
 		}
         //if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
         //{
@@ -116,11 +123,15 @@ public class TriggerHatch : MonoBehaviour
  
     void OnTriggerExit( Collider other )
     {
-		if (Config.IsStandalone && other.tag.Equals("Player")) {
-			RPCAnimate(false);
-		}
-		else if (Config.IsServer){
-			Close ();
+		if (!IsClose)
+		{
+			if (Config.IsStandalone && other.tag.Equals("Player")) {
+				RPCAnimate(false);
+			}
+			else if (Config.IsServer){
+				Close ();
+			}
+			IsClose = true;
 		}
         //if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
         //{

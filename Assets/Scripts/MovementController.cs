@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 {
     public float defaultWalkVelocityMeterPerSec = 1.4f; // durchschn. laut Wikipedia
     public float defaultTurnVelocityDegPerSec = 90f; // viertel Kreis pro Sekunde
-
+	
     private float walkVelocityMeterPerSec = 0f;
     private float turnVelocityDegPerSec = 0f;
     private float upVelocityDegPerSec = 0f;
@@ -16,8 +16,8 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
     private KinectController kinectController;
     private GameObject player;
     private GameObject playerAvatar;
-    private SimpleWiiTurnNavigationMediator wiiTurnMediator;
-    private SimpleWiiWalkNavigationMediator wiiWalkMediator;
+    //private SimpleWiiTurnNavigationMediator wiiTurnMediator; // Soll keine Standart konfiguration von der DHL benutzen.
+    //private SimpleWiiWalkNavigationMediator wiiWalkMediator; // Soll keine Standart konfiguration von der DHL benutzen.
     private WalkingInPlaceNavigationMediator wipWalkMediator;
     private RedirectToFrontNavigationMediator redirectToFrontTurnMediator;
     private AvatarAdapterConnector avatarConnector;
@@ -38,8 +38,8 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
     void OnDestroy ()
     {
-        wiiTurnMediator = null;
-        wiiWalkMediator = null;
+        //wiiTurnMediator = null;
+        //wiiWalkMediator = null;
         wipWalkMediator = null;
         redirectToFrontTurnMediator = null;
         avatarConnector = null;
@@ -54,13 +54,13 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
         {
             wiiController = GetComponentInChildren<WiiController> ();
 
-            wiiTurnMediator = new SimpleWiiTurnNavigationMediator ( wiiController.WiiMote, avatarConnector );
+            //wiiTurnMediator = new SimpleWiiTurnNavigationMediator ( wiiController.WiiMote, avatarConnector );
             // RedirectToFrontTurnMediator benutzt Radianten. Da es den selben Callback setTurnVelocity() (siehe unten)
             // nutzt, muss das hier auch in Radiant sein.
-            wiiTurnMediator.setTargetTurnVelocity ( defaultTurnVelocityDegPerSec*Mathf.Deg2Rad );
+            //wiiTurnMediator.setTargetTurnVelocity ( defaultTurnVelocityDegPerSec*Mathf.Deg2Rad );
 
-            wiiWalkMediator = new SimpleWiiWalkNavigationMediator ( wiiController.WiiMote, avatarConnector );
-            wiiWalkMediator.setTargetWalkVelocity ( defaultWalkVelocityMeterPerSec );
+            //wiiWalkMediator = new SimpleWiiWalkNavigationMediator ( wiiController.WiiMote, avatarConnector );
+           // wiiWalkMediator.setTargetWalkVelocity ( defaultWalkVelocityMeterPerSec );
         }
 
         if ( Config.Instance.UseKinect )
@@ -83,23 +83,23 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
      
         if ( Config.Instance.UseWii && ( wipWalkMediator == null || wipWalkMediator.isEnabled () ) )
         {
-            wiiTurnMediator.setEnabled ( true );
-            wiiWalkMediator.setEnabled ( true );
+            //wiiTurnMediator.setEnabled ( true );
+            //wiiWalkMediator.setEnabled ( true );
             if ( Config.Instance.UseKinect )
             {
                 wipWalkMediator.setEnabled ( false );
                 redirectToFrontTurnMediator.setEnabled ( false );
             }
         }
-        else if ( Config.Instance.UseKinect && ( wiiTurnMediator == null || wiiTurnMediator.isEnabled () ) )
+        else if ( Config.Instance.UseKinect )//wiiTurnMediator == null || wiiTurnMediator.isEnabled () ) )
             {
                 wipWalkMediator.setEnabled ( true );
                 redirectToFrontTurnMediator.setEnabled ( true );
 
                 if ( Config.Instance.UseWii )
                 {
-                    wiiTurnMediator.setEnabled ( false );
-                    wiiWalkMediator.setEnabled ( false );
+                    //wiiTurnMediator.setEnabled ( false );
+                    //wiiWalkMediator.setEnabled ( false );
                 }
             }
     }
@@ -107,7 +107,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
     void OnGUI ()
     {
-        if ( Config.Instance.UseWii && wiiTurnMediator.isEnabled () )
+        if ( Config.Instance.UseWii)// && wiiTurnMediator.isEnabled () )
         {
             GUI.Box ( new Rect ( Screen.width - 155, 5, 150, 25 ), "Nav: Wii" );
         }
@@ -195,7 +195,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
 
     private void updateKeyboard ()
-    {
+    {//
         if ( Input.GetKeyDown ( Config.Instance.keyboardButtonForward ) )
         {
             this.walkVelocityMeterPerSec = this.defaultWalkVelocityMeterPerSec;
@@ -251,38 +251,42 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
         }
     }
 
-
+	// ToggleNav (); :=
+	// Resetbutton (aus der Config) ist belegt durch Restaeter.cs
     void Update ()
     {
         if ( Config.Instance.UseWii)
 		{
-			if  (wiiController.WiiMote.getButtonState ( WiiMote.ButtonId.PLUS ) == ButtonState.TOGGLE_DOWN )
+			if  (wiiController.WiiMote.getButtonState ( WiiMote.ButtonId.TWO ) == ButtonState.TOGGLE_DOWN )
 			{
-				ToggleNav ();
+				// ToggleNav ();
 			}
 
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_DOWN)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.A) == ButtonState.TOGGLE_DOWN)
 			{
 				this.walkVelocityMeterPerSec = this.defaultWalkVelocityMeterPerSec;
 			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_DOWN)
+			/*Rückwärtslaufen
+			 * if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_DOWN)
 			{
 				this.walkVelocityMeterPerSec = -this.defaultWalkVelocityMeterPerSec;
-			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_DOWN)
+			}*/
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.LEFT) == ButtonState.TOGGLE_DOWN)
 			{
 				this.turnVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+				//this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
 			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_DOWN)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.RIGHT) == ButtonState.TOGGLE_DOWN)
 			{
 				this.turnVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+				//this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
 			}
 
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_DOWN)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.DOWN) == ButtonState.TOGGLE_DOWN)
 			{
 				this.upVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
 			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_DOWN)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.UP) == ButtonState.TOGGLE_DOWN)
 			{
 				this.upVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
 			}
@@ -291,19 +295,19 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 			{
 				this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
 			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_DOWN)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.PLUS) == ButtonState.TOGGLE_DOWN)
 			{
 				this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
 			}
-
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_UP) == ButtonState.TOGGLE_UP)
+			
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.A) == ButtonState.TOGGLE_UP)
 			{
 				this.walkVelocityMeterPerSec = 0f;
 			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_UP)
+			/*if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_UP)
 			{
 				this.walkVelocityMeterPerSec = 0f;
-			}
+			}*/
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_UP)
 			{
 				this.turnVelocityDegPerSec = 0f;
@@ -313,11 +317,11 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 				this.turnVelocityDegPerSec = 0f;
 			}
 
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.C) == ButtonState.TOGGLE_UP)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.DOWN) == ButtonState.TOGGLE_UP)
 			{
 				this.upVelocityDegPerSec = 0f;
 			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.Z) == ButtonState.TOGGLE_UP)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.UP) == ButtonState.TOGGLE_UP)
 			{
 				this.upVelocityDegPerSec = 0f;
 			}
@@ -326,9 +330,20 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 			{
 				this.rollVelocityDegPerSec = 0f;
 			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_UP)
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.PLUS) == ButtonState.TOGGLE_UP)
 			{
 				this.rollVelocityDegPerSec = 0f;
+			}
+			
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.LEFT) == ButtonState.TOGGLE_UP)
+			{
+				this.turnVelocityDegPerSec = 0f;
+				//this.rollVelocityDegPerSec = 0f;
+			}
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.RIGHT) == ButtonState.TOGGLE_UP)
+			{
+				this.turnVelocityDegPerSec = 0f;
+				//this.rollVelocityDegPerSec = 0f;
 			}
 		}
 		

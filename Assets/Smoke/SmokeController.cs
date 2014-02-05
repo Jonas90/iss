@@ -9,14 +9,14 @@ public class SmokeController : MonoBehaviour {
 	private float lifeTimeDefault;
 	
 	void Awake () {
-		play = true;
-		playing = false;
-		lifeTimeDefault = 1;
-		spreadFactor = 1.0f;
+		//play = true;
+		//playing = false;
+		//lifeTimeDefault = 1;
+		//spreadFactor = 1.0f;
 		particleSystem.Stop();
-		particleSystem.startSize = 2.0f;
-		particleSystem.startSpeed = 0.2f;
-		particleSystem.emissionRate = 50;
+		//particleSystem.startSize = 2.0;
+		//particleSystem.startSpeed = 0.2f;
+		//particleSystem.emissionRate = 50;
 		particleSystem.startLifetime = lifeTimeDefault;
 	}
 	

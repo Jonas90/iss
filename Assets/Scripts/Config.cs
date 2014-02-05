@@ -144,7 +144,7 @@ public class Config : MonoBehaviour
 	/// Button auf der Wii, mit dem das Licht umgeschaltet wird
 	</summary>
 	*/
-	public WiiMote.ButtonId wiiButtonLight = WiiMote.ButtonId.A;
+	//public WiiMote.ButtonId wiiButtonLight = WiiMote.ButtonId.A;
 	/**
 	<summary>
 	/// Button auf der Wii, mit dem die Szene resettet wird
