@@ -1,4 +1,4 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 using Cave;
@@ -12,12 +12,14 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
     private float turnVelocityDegPerSec = 0f;
     private float upVelocityDegPerSec = 0f;
     private float rollVelocityDegPerSec = 0f;
+    private SmokeController smokeController;
     private WiiController wiiController;
     private KinectController kinectController;
     private GameObject player;
     private GameObject playerAvatar;
-    //private SimpleWiiTurnNavigationMediator wiiTurnMediator; // Soll keine Standart konfiguration von der DHL benutzen.
-    //private SimpleWiiWalkNavigationMediator wiiWalkMediator; // Soll keine Standart konfiguration von der DHL benutzen.
+    private GameObject smoke;
+    //private SimpleWiiTurnNavigationMediator wiiTurnMediator; // Soll keine Standart konfiguration von der DLL benutzen.
+    //private SimpleWiiWalkNavigationMediator wiiWalkMediator; // Soll keine Standart konfiguration von der DLL benutzen.
     private WalkingInPlaceNavigationMediator wipWalkMediator;
     private RedirectToFrontNavigationMediator redirectToFrontTurnMediator;
     private AvatarAdapterConnector avatarConnector;
@@ -33,6 +35,12 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
         playerAvatar = GameObject.Find ( "AvatarMainPlayer" );
         this.observer = (NetworkObserver) GameObject.FindObjectOfType ( typeof(NetworkObserver) );
+
+        // Create a reference to smoke GameObject
+        smoke = GameObject.Find("SmokeParticleSystem");
+
+        // Create a reference to smokeController script
+        smokeController = smoke.GetComponent<SmokeController>();
     }
 
 
@@ -113,7 +121,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
         }
         else if ( Config.Instance.UseKinect && wipWalkMediator.isEnabled () )
             {
-                GUI.Box ( new Rect ( Screen.width - 155, 5, 150, 25 ), "Nav: KÃ¶rper" );
+                GUI.Box ( new Rect ( Screen.width - 155, 5, 150, 25 ), "Nav: Körper" );
             }
             else
             {
@@ -138,7 +146,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
         if ( turnVelocityDegPerSec != 0.0f )
         {
-            // Wenn Kinect angeschlossen, kÃ¶nnen wir um den User rotieren
+            // Wenn Kinect angeschlossen, können wir um den User rotieren
             if ( Config.Instance.UseKinect )
             {
                 Vector3 pos = kinectController.getSensor ( Kinect.TrackerId.HIP_CENTER );
@@ -147,10 +155,10 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
                 player.transform.Translate ( pos );
                 // um diese drehen...
                 player.transform.Rotate ( Vector3.up, turnVelocityDegPerSec*Time.deltaTime );
-                // und wieder zurÃ¼ck.
+                // und wieder zurück.
                 player.transform.Translate ( -pos );
             }
-            else // Ansonsten um den Mittelpunkt, wie frÃ¼her.
+            else // Ansonsten um den Mittelpunkt, wie früher.
             {
                 player.transform.Rotate ( Vector3.up, turnVelocityDegPerSec*Time.deltaTime );
             }
@@ -222,13 +230,17 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
             this.upVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
         }
 
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            smokeController.play = !smokeController.play;
         }
 
         if ( Input.GetKeyUp ( Config.Instance.keyboardButtonForward ) || Input.GetKeyUp ( Config.Instance.keyboardButtonBackward ) )
@@ -251,100 +263,106 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
         }
     }
 
-	// ToggleNav (); :=
-	// Resetbutton (aus der Config) ist belegt durch Restaeter.cs
     void Update ()
     {
         if ( Config.Instance.UseWii)
 		{
-			if  (wiiController.WiiMote.getButtonState ( WiiMote.ButtonId.TWO ) == ButtonState.TOGGLE_DOWN )
-			{
-				// ToggleNav ();
-			}
-
+            // WiiButton A := Vorwärts laufen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.A) == ButtonState.TOGGLE_DOWN)
 			{
 				this.walkVelocityMeterPerSec = this.defaultWalkVelocityMeterPerSec;
 			}
-			/*RÃ¼ckwÃ¤rtslaufen
-			 * if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_DOWN)
-			{
-				this.walkVelocityMeterPerSec = -this.defaultWalkVelocityMeterPerSec;
-			}*/
+            // WiiButton Steuerkreuz Links := Nach links drehen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.LEFT) == ButtonState.TOGGLE_DOWN)
 			{
 				this.turnVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
-				//this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
 			}
+            // WiiButton Steuerkreuz Rechts := Nach rechts drehen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.RIGHT) == ButtonState.TOGGLE_DOWN)
 			{
 				this.turnVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
-				//this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
 			}
-
+            // Nunchuck Stick Rechts := Nach rechts drehen
+            if (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_UP)
+            {
+                this.turnVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
+            }
+            // Nunchuck Stick Links := Nach links drehen
+            if (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_UP)
+            {
+                this.turnVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+            }
+            // WiiButton Steuerkreuz Unten := Nach unten schauen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.DOWN) == ButtonState.TOGGLE_DOWN)
 			{
 				this.upVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
 			}
+            // WiiButton Steuerkreuz Oben := Nach oben schauen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.UP) == ButtonState.TOGGLE_DOWN)
 			{
 				this.upVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
 			}
-
+            // WiiButton "-" := Nach links rollen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_DOWN)
-			{
-				this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
-			}
-			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.PLUS) == ButtonState.TOGGLE_DOWN)
 			{
 				this.rollVelocityDegPerSec = this.defaultTurnVelocityDegPerSec;
 			}
-			
+            // WiiButton "+" := Nach rechts rollen
+			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.PLUS) == ButtonState.TOGGLE_DOWN)
+			{
+				this.rollVelocityDegPerSec = -this.defaultTurnVelocityDegPerSec;
+			}
+            // WiiButton B := Rauch aktivieren/deaktivieren
+            if (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.B) == ButtonState.TOGGLE_DOWN)
+            {
+                smokeController.play = !smokeController.play;
+            }
+			// Vorwärtsbewegung stoppen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.A) == ButtonState.TOGGLE_UP)
 			{
 				this.walkVelocityMeterPerSec = 0f;
 			}
-			/*if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_DOWN) == ButtonState.TOGGLE_UP)
-			{
-				this.walkVelocityMeterPerSec = 0f;
-			}*/
+            // Drehen stoppen (Nunchuck)
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_RIGHT) == ButtonState.TOGGLE_UP)
 			{
 				this.turnVelocityDegPerSec = 0f;
 			}
+            // Drehen stoppen (Nunchuck)
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.STICK_DIGITAL_LEFT) == ButtonState.TOGGLE_UP)
 			{
 				this.turnVelocityDegPerSec = 0f;
 			}
-
+            // Runterschauen stoppen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.DOWN) == ButtonState.TOGGLE_UP)
 			{
 				this.upVelocityDegPerSec = 0f;
 			}
+            // Hochschauen stoppen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.UP) == ButtonState.TOGGLE_UP)
 			{
 				this.upVelocityDegPerSec = 0f;
 			}
-
+            // Rollen stoppen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.MINUS) == ButtonState.TOGGLE_UP)
 			{
 				this.rollVelocityDegPerSec = 0f;
 			}
+            // Rollen stoppen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.PLUS) == ButtonState.TOGGLE_UP)
 			{
 				this.rollVelocityDegPerSec = 0f;
 			}
-			
+			// Drehen stoppen (WiiMote)
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.LEFT) == ButtonState.TOGGLE_UP)
 			{
 				this.turnVelocityDegPerSec = 0f;
-				//this.rollVelocityDegPerSec = 0f;
 			}
+            // Drehen stoppen (WiiMote)
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.RIGHT) == ButtonState.TOGGLE_UP)
 			{
 				this.turnVelocityDegPerSec = 0f;
-				//this.rollVelocityDegPerSec = 0f;
 			}
+            
 		}
 		
 		
