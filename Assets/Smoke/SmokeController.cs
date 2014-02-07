@@ -4,11 +4,14 @@ using System.Collections;
 public class SmokeController : MonoBehaviour {
 	
 	public bool play;
+	
 	public float spreadFactor;
 	private bool playing;
 	private float lifeTimeDefault;
+    private NetworkView NetView;
 	
 	void Awake () {
+        NetView = networkView;
 		//play = true;
 		//playing = false;
 		//lifeTimeDefault = 1;
@@ -25,22 +28,35 @@ public class SmokeController : MonoBehaviour {
 	
 	}
 	
+	private void changeState(bool play) {
+		Debug.Log("changeState: " + play);
+		if (play) {
+			particleSystem.startLifetime = lifeTimeDefault;
+			particleSystem.Play();
+			Debug.Log("Rauchentwicklung gestartet");
+		} else {
+			particleSystem.Stop();
+			Debug.Log("Rauchentwicklung gestoppt");
+		}
+		this.play = play;
+		this.playing = play;
+	}
+	
 	// Update is called once per frame
 	void Update () {
 			
 		// Starts smoke emission
-		if (play && !playing) {
-			particleSystem.startLifetime = lifeTimeDefault;
-			particleSystem.Play();
-			playing = true;
-			Debug.Log("Rauchentwicklung gestartet");
-		}
-		
-		// Stops smoke emission
-		if (!play && playing) {
-			particleSystem.Stop();
-			playing = false;
-			Debug.Log("Rauchentwicklung gestoppt");
+		if (play != playing) {
+			Debug.Log("play != playing: " + play);
+			if (Config.Instance.IsStandalone) {
+				changeState(play);
+			} else {
+				Debug.Log("play != playing:NotStandalone");
+				Debug.Log("NetView:" + NetView);
+				Debug.Log("NetView2:" + networkView);
+				networkView.RPC( "changeStateRPC", RPCMode.All, play );
+				Debug.Log("play != playing:NotStandalone2");
+			}
 		}
 		
 		// Increases startLifetime depending on duration of smoke emission
@@ -62,5 +78,11 @@ public class SmokeController : MonoBehaviour {
 			particleSystem.startLifetime--;
 		if (Input.GetKeyDown(KeyCode.F6))
 			particleSystem.startLifetime++;
+	}
+	
+	[RPC]
+	public void changeStateRPC(bool play) {
+		Debug.Log("changeStateRPC");
+		changeState(play);
 	}
 }

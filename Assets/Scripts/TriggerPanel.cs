@@ -38,11 +38,11 @@ public class TriggerPanel : TriggerAbstract
     {
         if ( State )
         {
-            NetView.RPC ( "RPCSetObjectDescription", RPCMode.AllBuffered, ObjectDescriptionOff );
+            //NetView.RPC ( "RPCSetObjectDescription", RPCMode.AllBuffered, ObjectDescriptionOff );
         }
         else
         {
-            NetView.RPC ( "RPCSetObjectDescription", RPCMode.AllBuffered, ObjectDescriptionOn );
+            //NetView.RPC ( "RPCSetObjectDescription", RPCMode.AllBuffered, ObjectDescriptionOn );
         }
      
         base.OnMouseEnter ();

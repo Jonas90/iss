@@ -41,6 +41,7 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
 
         // Create a reference to smokeController script
         smokeController = smoke.GetComponent<SmokeController>();
+		Debug.Log("MovementController: Start: smokeController: " + smokeController);
     }
 
 
@@ -315,7 +316,12 @@ public class MovementController : MonoBehaviour, IAvatarAdapter
             // WiiButton B := Rauch aktivieren/deaktivieren
             if (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.B) == ButtonState.TOGGLE_DOWN)
             {
-                smokeController.play = !smokeController.play;
+            	smokeController.play = !smokeController.play;
+            }
+            // WiiButton TWO := Rauch aktivieren/deaktivieren
+            if (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.TWO) == ButtonState.TOGGLE_DOWN)
+            {
+            	smokeController.play = !smokeController.play;
             }
 			// Vorwärtsbewegung stoppen
 			if  (wiiController.WiiMote.getButtonState(WiiMote.ButtonId.A) == ButtonState.TOGGLE_UP)
