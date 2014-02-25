@@ -1,0 +1,577 @@
+{
+"__comment__" : ", In diesem JSON Dokument sind die Abhängigkeiten der Klassen aus den ersten Ebenen des Ordnes /Assets/Scripts aufgeführt. Jede Klasse enthält die Felder UsedIn und GameObject. UsedIn beinhaltet eine Liste aller Klassen die gennanten Klasse verwenden. GameObject beinhaltet die Liste der GameObject die innerhalb des UnityEditors an die die gennante Klasse angehangen worden ist. Innerhalb der Listen wurden an manchen stellen ein * Wildcard und die Regex Gruppe für Zahlen \\d (backslash d) verwendet um die Datei kompakt zu halten.",
+
+"data" :
+{
+	"AnimationRotateAbstract" :
+	{
+		"UsedIn" :
+		[
+			"AnimationRotateByStep",
+			"AnimationRotateByTime"
+		], "GameObject" : []
+	},
+
+	"AnimationRotateByStep" : { "UsedIn" : [], "GameObject" : [] },
+
+	"AnimationRotateByTime" : { "UsedIn" : [], "GameObject" : [] },
+
+	"ApplicationStarter" :
+	{
+		"UsedIn" : [ "GameController" ], "GameObject" : []
+	},
+
+	">>BodyArmature" :
+	{
+		"UsedIn" : [ "KinectKontroller" ], "GameObject" : []
+	},
+
+	">>Cave" : { "UsedIn" : [], "GameObject" : [] },
+
+	"&&Client" :
+	{
+		"UsedIn" : [ "GameController" ], "GameObject" : []
+	},
+
+	">>Client_Menu" :
+	{
+		"UsedIn" : [],
+		"GameObject" : [ "Client_Menu" ]
+	},
+
+	"ClientCamera" : 
+	{
+		"UsedIn" : [], "GameObject" : []
+	},
+
+	"ClientCameraController" :
+	{
+		"UsedIn" : [ "GameController" ], "GameObject" : []
+	},
+
+	"ClientCameraInfo" :
+	{
+		"UsedIn" :
+		[
+			"ApplicationStarter",
+			"Config",
+			"EquptmentAsGui"
+		], "GameObject" : []
+	},
+
+	"ClientCameraScreen" :
+	{
+		"UsedIn" : [ "ClientCameraVanishingPoint" ], "GameObject" : []
+	},
+
+	"ClientCameraVanishingPoint" : { "UsedIn" : [], "GameObject" : [] },
+
+	"&&Config" : 
+	{
+		"UsedIn" : 
+		[
+			"AnimationRotateAbstract",
+			"ApplicationStarter",
+			"Client",
+			"ClientCameraController",
+			"Client_Menu",
+			"Config",
+			"Crosshair",
+			"Equipment",
+			"EquipmentManager",
+			"FramesPerSecond",
+			"FunkyGlowingThingsElement",
+			"GameController",
+			"GuiScreenPosition",
+			"InteractionKey",
+			"KinectController",
+			"MeterAbstract",
+			"MovementController",
+			"NetworkObserver",
+			"Overview",
+			"OverviewIndicator",
+			"PlayerInteractionGame",
+			"PlayerMovement",
+			"PlayerRotation",
+			"CamManager",
+			"ProjectMatrix",
+			"Restarter",
+			"Server",
+			"Skeleton",
+			"TriggerButtonSequence",
+			"TriggerHatch",
+			"Voice",
+			"WiiController",
+			"SmokeController"
+		],
+		"GameObject" : [ "Config" ]
+	},
+
+	"ConfigClass" : { "UsedIn" : [], "GameObject" : [] },
+
+	"Crosshair" : { "UsedIn" : [], "GameObject" : [] },
+
+	"DestroyGameObjectsAfterPlay" : { "UsedIn" : [], "GameObject" : [] },
+
+	"Equipment" :
+	{
+		"UsedIn" :
+		[
+			"EquipmentAsGui",
+			"EquipmentAtMerci",
+			"EquipmentManager",
+			"MeterAbstract",
+			"TriggerEquipment"
+		], "GameObject" : []
+	},
+
+	"EquipmentAsGui" :
+	{
+		"UsedIn" :
+		[
+			"EquipmentManager",
+			"TriggerEquipment"
+		], "GameObject" : []
+	},
+
+	"EquipmentAtMercy" :
+	{
+		"UsedIn" : [ "TriggerEquipment" ], "GameObject" : []
+	},
+
+	"EquipmentManager" :
+	{
+		"UsedIn" : [ "TriggerEquipment" ], "GameObject" : []
+	},
+
+	"FirePortLabel" :
+	{
+		"UsedIn" : [ "TriggerEquipment" ],
+		"GameObject" : 
+		[
+			"COL1*", 
+			"MARESMainBox"
+		]
+	},
+
+	"FramesPerSecond" : { "UsedIn" : [], "GameObject" : [] },
+
+	"FunkyGlowingThingsEffect" : { "UsedIn" : [], "GameObject" : [] },
+
+	"FunkyGlowingThingsElement" :
+	{
+		"UsedIn" : [ "TriggerAbstract" ], "GameObject" : []
+	},
+
+	"Game" : { "UsedIn" : [], "GameObject" : [] },
+
+	"GameController" : 
+	{	
+		"UsedIn" : 
+		[
+			"Client",
+			"Client_Menu",
+			"MovementController",
+			"NetworkObserver",
+			"PhysicModel",
+			"PlayerInteractionGame",
+			"Restarter",
+			"Server",
+			"Skeleton"
+		], "GameObject" : []
+
+	},
+
+	"GameToManage" :
+	{
+		"UsedIn" : [ "GameController" ], "GameObject" : []
+	},
+
+	"GuiScreenPosition" :
+	{
+		"UsedIn" : [ "Overview" ], "GameObject" : []
+	},
+
+	"HoveringText" : { "UsedIn" : [], "GameObject" : [] },
+
+	"InteractionKey" :
+	{
+		"UsedIn" :
+		[
+			"PlayerInteractionGame",
+			"TriggerAbstract"
+		], "GameObject" : []
+	},
+
+	"IntVector2" : { "UsedIn" : [], "GameObject" : [] },
+
+	">>KinectController" :
+	{
+		"UsedIn" :
+		[
+			"Client",
+			"MovementController",
+			"Server",
+			"Skeleton"
+		],
+		"GameObject" : [ "CameraTransform" ]
+	},
+
+	"LayerSetter" :
+	{
+		"UsedIn" :
+		[
+			"MeterFireExtinguisher",
+			"MeterFirePort",
+			"TriggerEquipment"
+		],
+		"GameObject" : [ "ISS" ]
+	},
+
+	"LayerSetterElement" :
+	{
+		"UsedIn" :
+		[
+			"MeterFireExtinguisher",
+			"MeterFirePort",
+			"TriggerEquipment"
+		],
+		"GameObject" :
+		[
+			"Level *",
+			"ISS"
+		]
+	},
+
+	"LevelLoader" : { "UsedIn" : [], "GameObject" : [] },
+
+	">>LightController" :
+	{
+		"UsedIn" : [ "ShootController" ], "GameObject" : []
+	},
+
+	">>Logger" : 
+	{
+		"UsedIn" : 
+		[
+			"Client",
+			"Client_Menu",
+			"Config",
+			"GameController",
+			"KinectController",
+			"CamGroup",
+			"CamManager",
+			"PixelMask",
+			"ProjectionMatrix",
+			"Restarter",
+			"Server",
+			"callback",
+			"FileHelper",
+			"Voice",
+			"WiiController",
+			"PostBuild"
+		],
+		"GameObject" : [ "Config" ]
+	},
+
+	"MeasurementValues" :
+	{
+		"UsedIn" :
+		[
+			"MeasurementAbstract",
+			"MeterAbstract",
+			"MeterFireAir",
+			"MeterFirePort"
+		], "GameObject" : []
+	},
+
+	"MeasurementFireAir" :
+	{
+		"UsedIn" : [ "MeterFireAir" ],
+		"GameObject" : [ "GameController" ]
+	},
+
+	"MeasurementFirePort" :
+	{
+		"UsedIn" : [ "MeterFirePort" ], "GameObject" : []
+	},
+
+	"MeterAbstract" :
+	{
+		"UsedIn" :
+		[
+			"MeterFireAir",
+			"MeterFireExtinguisher",
+			"MeterFirePort"
+		], "GameObject" : []
+	},
+
+	"MeterFireAir" : { "UsedIn" : [], "GameObject" : [] },
+
+	"MeterFireExtinguisher" :
+	{
+		"UsedIn" : [ "TriggerFirePort" ], "GameObject" : []
+	},
+
+	"MeterFirePort" :
+	{
+		"UsedIn" : [ "TriggerFirePort" ], "GameObject" : []
+	},
+
+	"MovementController" :
+	{
+		"UsedIn" :
+		[
+			"Client",
+			"Server"
+		],
+		"GameObject" :
+		[
+			"Player",
+			"GameController"
+		]
+	}, 
+
+	"NetworkObserver" :
+	{
+		"UsedIn" :
+		[
+			"Client",
+			"MovementController",
+			"CamManager",
+			"Restarter",
+			"Server"
+		],
+		"GameObject" : [ "NetworkObserver" ]
+	}, 
+
+	"Overview" : { "UsedIn" : [], "GameObject" : [] },
+
+	"OverviewIndicator" : { "UsedIn" : [], "GameObject" : [] },
+
+	"PhysicModel" :
+	{
+		"UsedIn" :
+		[
+			"Client",
+			"GameController",
+			"PhysicModel",
+			"Server"
+		],
+		"GameObject" :
+		[
+			"CameraTransform",
+			"CamHolder",
+			"CAVEStereoHeadNew",
+			"GameController",
+			"LeftArm",
+			"NetworkObserver",
+			"Player",
+			"RightArm",
+			"Skeleton"
+		]
+	}, 
+
+	"PlayerInteractionGame" :
+	{
+		"UsedIn" : [],
+		"GameObject" : [ "GameController" ]
+	}, 
+
+	"PlayerMovement" :
+	{
+		"UsedIn" :
+		[
+			"GameController",
+			"MeterAbstract",
+			"PlayerMovement",
+			"TriggerEquipment"
+		], "GameObject" : []
+	},
+
+	"PlayerRotation" :
+	{
+		"UsedIn" : [ "GameController" ], "GameObject" : []
+	},
+
+	"RendererData" :
+	{
+		"UsedIn" :
+		[
+			"FunkyGlowingThingsElement",
+			"RendererData",
+			"TriggerButton",
+			"TriggerEquipment"
+		], "GameObject" : []
+	},
+
+	"Restarter" :
+	{
+		"UsedIn" : [ "NetworkObserver" ],
+		"GameObject" :
+		[
+			"NetworkObserver",
+			"Restarter"
+		]
+	}, 
+
+	"Rigidtester" : { "UsedIn" : [], "GameObject" : [] },
+
+	">>Server" :
+	{
+		"UsedIn" : [ "GameController" ], "GameObject" : []
+	},
+
+	">>ShootController" :
+	{
+		"UsedIn" : [],
+		"GameObject" :
+		[
+			"Player",
+			"GameController"
+		]
+	},
+
+	">>Skeleton" :
+	{
+		"UsedIn" : [ "NetworkObserver" ],
+		"GameObject" : [ "Skeleton" ]
+	},
+
+	"SkyboxController" : { "UsedIn" : [], "GameObject" : [] },
+
+	"TriggerAbstract" :
+	{
+		"UsedIn" :
+		[
+			"TriggerButton",
+			"TriggerEquipment",
+			"TriggerFirePort",
+			"TriggerPanel"
+		],	"GameObject" : []
+	},
+
+	"TriggerButton" :
+	{
+		"UsedIn" : [ "TriggerButtonSequence" ],
+		"GameObject" :
+		[
+			"Hatch Trigger*",
+			"Kurbelelement*",
+			"PowerSwitch",
+			"Pressure_Value_*",
+			"Stowage_Latch_Handle*"
+		]
+	},
+
+	"TriggerButtonSequence" :
+	{
+		"UsedIn" : [ "TriggerHatch" ],
+		"GameObject" :
+		[
+			"Hatch Trigger*",
+			"PowerSwitch"
+		]
+	},
+
+	"TriggerEquipment" :
+	{
+		"UsedIn" : [],
+		"GameObject" :
+		[
+			"ISS",
+			"Level *"
+		]
+	},
+
+	"TriggerFirePort" :
+	{
+		"UsedIn" : [],
+		"GameObject" :
+		[
+			"COL1*",
+			"MARESMainBox"
+		]
+	},
+
+	"TriggerHatch" :
+	{
+		"UsedIn" : [],
+		"GameObject" : [ "Hatch *" ]
+	},
+
+	"TriggerPanel" :
+	{
+		"UsedIn" : [ "TriggerPanelManager" ],
+		"GameObject" : [ "CautionWarningPanel" ]
+	},
+
+	"TriggerPanelButton" :
+	{
+		"UsedIn" : [ "TriggerPanel" ],
+		"GameObject" :
+		[
+			"ButtonCaut",
+			"ButtonFire",
+			"ButtonWarn"
+		]
+	},
+
+	"TriggerPanelManager" :
+	{
+		"UsedIn" : [ "TriggerPanel" ],
+		"GameObject" : [ "ISS" ]
+	},
+
+	"UniqueID" :
+	{
+		"UsedIn" :
+		[
+			"LayerSetter",
+			"LayerSetterElement",
+			"UniqueIDManager"
+		], "GameObject" : []
+	},
+
+	"UniqueIDManager" :
+	{
+		"UsedIn" : [ "LayerSetter" ],
+		"GameObject" : [ "ISS" ]
+	},
+
+	">>Voice" :
+	{
+		"UsedIn" : [ "GameController" ], "GameObject" : []
+	},
+
+	"Volume" :
+	{
+		"UsedIn" : [ "MeasurementFireAir" ],
+		"GameObject" :
+		[
+			"Columbus",
+			"ContrainerVolume",
+			"Cupola",
+			"Destiny_Inner_Simple",
+			"ELMVolume",
+			"FGB_interior_simple",
+			"Inner_Node\\d_Simple",
+			"Inner_Quest_Airlock_w_animHatch",
+			"JEM_Inner_Simple",
+			"SM_interior_simple"
+		]
+	},
+
+	">>WiiController" :
+	{
+		"UsedIn" :
+		[
+			"Client",
+			"MovementController",
+			"Restarter",
+			"Server",
+			"Skeleton"
+		], "GameObject" : []
+	}
+}
+}
