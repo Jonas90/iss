@@ -1,3 +1,8 @@
+//dan
+//
+//Diese Klasse wird durch den Merge des 6. Etage Projektes nicht mehr benötigt
+//TODO: hängt noch am GameController -> entfernen & Testen
+
 
 // Hannes Helmholz
 //

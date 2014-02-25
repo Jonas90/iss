@@ -1,3 +1,7 @@
+//dan
+//Diese Klasse findet (noch) keine Verwendung, weder im original Helmholz noch 
+//im neuen ISS Projekt
+//-----------------------------------------------------------------------------
 
 // Hannes Helmholz
 //

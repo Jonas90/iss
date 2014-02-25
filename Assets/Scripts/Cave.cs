@@ -1,4 +1,9 @@
-﻿//#define CAVE_WITH_DEBUG_CHANNELS
+﻿//6. Etage
+//dan 
+//Enthält eine Mehrzahl an Klassen die für den Gebrauch von Kinect, Wii usw 
+//in der CAVE essenziell wichtig sind.
+
+//#define CAVE_WITH_DEBUG_CHANNELS
 
 using System;
 using System.Diagnostics;

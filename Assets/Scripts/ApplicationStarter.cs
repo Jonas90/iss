@@ -1,3 +1,12 @@
+//dan
+//TODO: Die Existenz diser Klasse ist nach dem Merge mit dem 6. Etage Project 
+//nicht mehr gegeben.
+//Jetzige Verwendung: die Methoden DestroyAllPhysics() und DestroyAllAudio() 
+//werden über den GameController in der Methode OnConnectedToServer aufgerufen.
+//
+//Es muss geprüft werden ob die Methoden notwendig sind und wohin diese 
+//verlagert werden.
+
 // Hannes Helmholz
 //
 // help functions for GameController

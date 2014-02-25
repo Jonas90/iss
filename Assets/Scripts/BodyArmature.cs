@@ -1,3 +1,7 @@
+//dan
+//deprecated, veraltete Datei aus dem 6. Etage Project, hängt noich am Kinect Controller
+//muss durch die neue Version aus dem Occulus Rift Project ersetzt werden
+
 using UnityEngine;
 
 public class BodyArmature

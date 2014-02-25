@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 using UnityEngine;
 using System;
 using System.IO;
@@ -13,13 +6,11 @@ using System.Collections.Generic;
 
 using System.Threading;
 using Cave;
-//using log4net;
 
 
 [ExecuteInEditMode]
 public class Config : MonoBehaviour
 {
-//	private static ILog logger = LogManager.GetLogger(typeof(Config));
 	
 	#region Einstellungen
 	// EINSTELLUNGEN vom Inspector aus erreichbar
