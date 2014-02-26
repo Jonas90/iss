@@ -2,7 +2,7 @@
 //TODO fix
 //
 //// Hannes Helmholz
-////
+//// Die Skybox haben wir nicht verwendet. Wir haben unsere eigene erstellt.
 //// 
 //
 //using UnityEngine;

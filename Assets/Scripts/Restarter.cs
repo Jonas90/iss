@@ -4,6 +4,9 @@ using System.Collections;
 
 using Cave;
 
+/** Zustaendig fuer das Neustarten des Spiels.
+ *  Dabei wird der Spieler an die Anfangsposition zurueckgesetzt.
+ */
 public class Restarter : MonoBehaviour
 {
     private WiiController wiiController;

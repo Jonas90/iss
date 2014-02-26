@@ -1,4 +1,8 @@
-﻿//6.E
+﻿//
+// Diese Klasse entstand von der 6. Etage.
+// Sie ist dafür zuständig, dass man das Skelet auf der Wii-Taste - Aktivieren und Deaktivieren kann.
+//
+
 using UnityEngine;
 using System.Collections;
 

@@ -1,11 +1,16 @@
-﻿//6.E
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
 using Cave;
 
+//
+// Dies ist der Server, hier sind alle Methoden gesammelt von der 6. Etage, die irgend etwas auslösen soll.
+// Dazu gehört das öffnen einer Tür, Bälleschießen und so weiter.
+// Über den NetworkObserver werden dann die RPC's der 6. Etage aufgerufen und
+// der Client informatiert.
+//
 public class Server
 {
     private NetworkObserver observer;

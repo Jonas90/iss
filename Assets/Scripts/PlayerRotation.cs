@@ -6,6 +6,9 @@
 
 using UnityEngine;
 
+/** Verwaltet die Rotation des Spielers
+ *  Unterscheidet dabei zwischen Standalone- und Servermodus.
+ */
 public class PlayerRotation : MouseLook
 {
 

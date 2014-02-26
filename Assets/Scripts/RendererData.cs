@@ -6,6 +6,9 @@
 using UnityEngine;
 using System.Collections;
 
+
+/** Zustaendig fuer das Rendern der verschiedenen Materialien.
+ */
 public class RendererData : System.Object
 {
  

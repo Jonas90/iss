@@ -1,6 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
+
+/**
+ * Diese Klasse ist Part der 6. Etage
+ * Der ShootController ist hauptverantwortlich für das schießen von Bällen.
+ * Dieser wird in diesem Projekt nicht verwendet.
+ */
 public class ShootController : MonoBehaviour
 {
 	public static float speed = 500;

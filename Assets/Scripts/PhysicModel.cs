@@ -1,12 +1,20 @@
 using UnityEngine;
 using System.Collections;
 
+/** Variablenhalter fuer einen Vector3 sowie einem Quaternion.
+ *  Dient zur Vereinfachung der Uebergabe dieser beiden Variablen bei einem Update.
+ */
 public class UpdateInformation
 {
     public Vector3 position;
     public Quaternion rotation;
 }
 
+/**Verwaltet die Positionen von Models.
+ * Beeinflusst die Positionen des Models im Raum.
+ * Ermoeglicht das Speichern der aktuellen Position des Models.
+ * Ermoeglicht das Zuruecksetzten von Models an die Startposition.
+ */
 public class PhysicModel : MonoBehaviour
 {
     private UpdateInformation lastInformations = new UpdateInformation ();
@@ -25,7 +33,8 @@ public class PhysicModel : MonoBehaviour
         this.startRotation = transform.localRotation;
     }
 
-
+	/**Speichert die aktuelle Position des aktuellen Models in lastInformations.
+	 */
     public UpdateInformation GetUpdateInformations ()
     {
         lastInformations.position = transform.position;
@@ -33,7 +42,9 @@ public class PhysicModel : MonoBehaviour
         return lastInformations;
     }
 
-
+	
+	/**Ermoeglicht es das aktelle Model an die Position zu Transformieren, die es zu Beginn hatte.
+	 */
     public void reset ()
     {
         this.transform.localPosition = startPosition;
@@ -55,13 +66,17 @@ public class PhysicModel : MonoBehaviour
         return true;
     }
 
-
+	/**
+	 * Entfernt dieses model von den Physics.
+	 */
     void OnDestroy ()
     {
         GameController.Instance.removeFromPhysics ( this );
     }
 
-
+	/**Hilfsfunktion um einen Vector3 auszugeben.
+	 * @return X, Y und Z Koordinaten als String.
+	 */
     public string encode ()
     {
         Vector3 pos = transform.position;
@@ -72,7 +87,8 @@ public class PhysicModel : MonoBehaviour
          rot.x + "#" + rot.y + "#" + rot.z;
     }
 
-
+	/**Hilfsfunktion um aus einer Reihe von Werten einen Vector3 zu machen.
+	 */
     public void decode ( string[] values )
     {
         Vector3 pos = new Vector3 (
