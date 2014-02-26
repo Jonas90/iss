@@ -3,6 +3,7 @@ using System.Collections;
 
 using Cave;
 
+//kalibriert steuerung per kinect
 public class KinectController : MonoBehaviour
 {
     private Vector3 curUserRotation;

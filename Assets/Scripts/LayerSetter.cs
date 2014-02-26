@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent (typeof(NetworkView))] // for RPC
 [RequireComponent (typeof(UniqueIDManager))]
 
+
+//organisiert game-objekten und zugehoerige ebene
 public class LayerSetter : MonoBehaviour
 {
  

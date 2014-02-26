@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+
+//loescht objekte nach dem spiel
 public class DestroyGameObjectsAfterPlay : MonoBehaviour
 {
     private float totalTimeBeforeDestroy;

@@ -6,6 +6,9 @@
 using System.Collections;
 using UnityEngine;
 
+
+//hintere Box vom Spieler
+//enthaelt schon aufgenommenes Equipment
 public class EquipmentAtMercy : Equipment
 {
  

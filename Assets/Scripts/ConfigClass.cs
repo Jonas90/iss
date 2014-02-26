@@ -1,5 +1,7 @@
 ////dan
-//
+//Alte Config-Klasse des Helmholz Projekts ist in die jetzige Config gemergt
+//worden
+
 //// Hannes Helmholz
 ////
 //// config contains all client and server informations

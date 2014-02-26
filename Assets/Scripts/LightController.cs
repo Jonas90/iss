@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+
+//organisiert komplette beleuchtung im projekt
 public class LightController : MonoBehaviour
 {
 

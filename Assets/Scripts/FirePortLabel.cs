@@ -7,6 +7,8 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 
+//zeigt Namen als Label an
+
 public class FirePortLabel : MonoBehaviour {
 
 	// =============================================================================

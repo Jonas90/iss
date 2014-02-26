@@ -9,6 +9,9 @@ using Holoville.HOTween;
 
 [RequireComponent (typeof(NetworkView))] // for RPC
 
+//vordere Box vom Spieler, im Blickfeld sichtbar
+//Gui object for equipment.cs
+//setzt texturen
 public class EquipmentAsGui : Equipment
 {
  

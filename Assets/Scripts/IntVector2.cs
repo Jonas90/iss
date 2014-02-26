@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//hilfsklasse fuer berechnungen mit vektoren
 public class IntVector2 : MonoBehaviour {
 
 	public int x, y;

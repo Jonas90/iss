@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿//dan
+//Logger Klasse aus dem 6. Etage Projekt. 
+
+using UnityEngine;
 using System;
 
 public class Logger : MonoBehaviour

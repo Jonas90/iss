@@ -9,6 +9,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(NetworkView))] // for RPC
 
+
+//managed hintere und vordere Box vom Spieler
+//also welches equipment aufgenommen/grad in der hand
 public class EquipmentManager : MonoBehaviour
 {
 

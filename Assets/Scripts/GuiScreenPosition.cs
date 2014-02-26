@@ -4,6 +4,8 @@
 // 
 using UnityEngine;
 
+
+//organisiert postionen im bildschirm
 public class GuiScreenPosition : MonoBehaviour
 {
  
