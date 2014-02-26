@@ -7,6 +7,12 @@ using UnityEngine;
 
 [RequireComponent (typeof(Collider))]
 
+/** Klasse, welche sich um die Lautstärke der
+ *  AudioClips in der Anwendung kümmert.
+ *  Es wird der Name des AudioClips und die
+ *  Entfernung zum Player ermittelt, um einen
+ *  3D-Sound auszugeben.
+ */
 public class Volume : MonoBehaviour
 {
  

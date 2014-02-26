@@ -4,6 +4,12 @@ using System;
 
 using ts3client_minimal_sample;
 
+/** Klasse, welche eine TeamSpeak-Verbindung
+ *  in die Cave aufbaut. Es gibt einen Client 
+ *  in der Cave für das Empfanden der Sprachenachricht
+ *  und einen Client für das Mikrofon außerhalb der Cave
+ *  zum Einsprechen der Nachricht.
+ */
 public class Voice// : MonoBehaviour
 {
     private TSClient tsc;

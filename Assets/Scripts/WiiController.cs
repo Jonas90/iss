@@ -2,6 +2,11 @@ using UnityEngine;
 
 using Cave;
 
+/** Klasse, welche sich um die WiiMote kümmert.
+ *  Der Controller wird hier beim Ausführen
+ *  des Skriptes erzeugt und ist somit in der
+ *  Anwendung einsatzbereit.
+ */
 public class WiiController : MonoBehaviour
 {
     public WiiMote WiiMote { get; private set; }

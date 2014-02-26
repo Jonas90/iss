@@ -7,6 +7,11 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 
+/** Klasse, welche UniqueID's an GameObjekte
+ *  vergibt und somit eindeutig macht. Außerdem
+ *  können GameObjekte anhand ihrer UniqueID
+ *  ermittelt werden.
+ */
 public class UniqueIDManager : MonoBehaviour
 {
  

@@ -2,6 +2,8 @@
 //
 //Diese Klasse wird durch den Merge des 6. Etage Projektes nicht mehr benötigt,
 //da die Camera aus dem 6. Etage Projekt verwendet wird
+//Vieles was mit Ojecthighlighting & Cursor zu tun hat ist jedoch mit der Helmholz Camera 
+//verbunden. Dies bedarf einer Überarbeitung.
 
 /*
 // Hannes Helmholz

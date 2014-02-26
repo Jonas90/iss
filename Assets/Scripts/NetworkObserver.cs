@@ -4,6 +4,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+
+/*
+ * NetworkObserver des 6.-Etage-Projektes für die Cave.
+ * Ist fuer die Netzwerk-Kommunikation zwischen Client und Server zustaendig.
+ * Alle nicht benötigten Funktionen der 6. Etage wurden auskommentiert.
+ * 
+ * */
 public class NetworkObserver : MonoBehaviour
 {
     public CamManager camManager;
