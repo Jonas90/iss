@@ -1,6 +1,6 @@
 
 // Hannes Helmholz
-//
+// Dieser TriggerManager managt alle Triggerpanels und stellt sicher das diese mit einander interagieren.
 // 
 
 using UnityEngine;

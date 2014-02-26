@@ -1,6 +1,6 @@
 
 // Hannes Helmholz
-//
+// Diese Klasse beinhaltet eine Liste von TriggerButtons und verwaltet diese.
 // 
 
 using UnityEngine;

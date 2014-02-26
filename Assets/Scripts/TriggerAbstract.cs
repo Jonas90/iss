@@ -1,6 +1,7 @@
 
 // Hannes Helmholz
-//
+// Diese Klasse ist der Grundstein für alle Trigger. Alle Trigger erben von dieser Klasse.
+// Dieses müsste aufgebrochen werden, da dadurch abhängigkeiten geschaffen werden.
 //
 
 using UnityEngine;

@@ -1,7 +1,8 @@
 
 // Hannes Helmholz
-//
-// 
+// Hier ist definiert wie sich der FirePort verhalten soll.
+// Dabei wird beim Eintreffen der Maus über den Trigger die Hilfe angezeigt.
+// Auch die Messung des Fireports wird hier behandelt.
 
 using UnityEngine;
 using System.Collections;

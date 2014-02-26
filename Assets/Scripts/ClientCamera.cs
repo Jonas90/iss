@@ -1,6 +1,7 @@
 //dan
 //
-//Diese Klasse wird durch den Merge des 6. Etage Projektes nicht mehr benötigt
+//Diese Klasse wird durch den Merge des 6. Etage Projektes nicht mehr benötigt,
+//da die Camera aus dem 6. Etage Projekt verwendet wird
 
 /*
 // Hannes Helmholz

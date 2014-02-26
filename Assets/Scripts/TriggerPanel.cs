@@ -1,13 +1,13 @@
 
 // Hannes Helmholz
-//
+// Das ist die Grundstruktur und verwaltet die Buttons. Dieses wurde aber
+// durch den TriggerPanelManager übernommen.
 // 
 
 using UnityEngine;
 
 public class TriggerPanel : TriggerAbstract
 {
-
     // =============================================================================
     // MEMBERS ---------------------------------------------------------------------
     [SerializeField]

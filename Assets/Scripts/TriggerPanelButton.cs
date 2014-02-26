@@ -1,6 +1,7 @@
 
 // Hannes Helmholz
-//
+// Diese Klasse lösst den Sirenen Sound aus, der beim aktivieren eines Panels aktiviert wird. Desweiterin
+// wird das blinken der Panels hier ausgelöst.
 // 
 
 using UnityEngine;

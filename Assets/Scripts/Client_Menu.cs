@@ -1,7 +1,8 @@
 //6. Etage
 
 //dan
-//Erstellt das Menü im Standalone Modus
+//Erstellt das Menü im Standalone Modus mitdem man sich zur CAVE verbinden kann,
+//bzw einen lokalen Server startet
 
 using UnityEngine;
 using System.Collections;

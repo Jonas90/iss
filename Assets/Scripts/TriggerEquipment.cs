@@ -1,6 +1,7 @@
 
 // Hannes Helmholzd
-//
+// Dieser Trigger behandelt die Auswahl der Gegenstände. Dadurch ist es Möglich
+// die Gegenstände Rotieren zu lassen.
 // 
 
 using Holoville.HOTween;
