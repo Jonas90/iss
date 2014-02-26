@@ -1,7 +1,8 @@
 ﻿//6. Etage
 
 //dan
-//Für die ISS 
+//Unnötige Funktionen aus dem 6. Etage Project wie der Ballwurf, Ballsounds
+//Lighttrigger, Enemys usw wurden auskommentiert.
 
 using UnityEngine;
 using System.Collections;
@@ -11,7 +12,6 @@ using Cave;
 
 public class Client
 {
-
 	private GameController game;
 	private GameObject player;
 

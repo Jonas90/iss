@@ -2,6 +2,7 @@
 // Hannes Helmholz
 //
 // class for animated objects with one open and one close animation
+
 using UnityEngine;
 
 [RequireComponent (typeof(NetworkView))] // for RPC
@@ -58,6 +59,9 @@ public class TriggerHatch : MonoBehaviour
     // =============================================================================
     #region METHODS UNITY ---------------------------------------------------------------
  
+	/**
+	 * Diese Methode wird vor der Startmethode aufgerufen und setzt wichtige Parameter.
+	 */
 	void Awake()
 	{		
 		Type = TriggerType.PermanentOpen;
@@ -66,7 +70,9 @@ public class TriggerHatch : MonoBehaviour
         Ani = animation;
         NetView = networkView;
 	}
-	
+	/**
+	 * Diese Methode wird einmal nach Awake aufgerufen.
+	 */
 	void Start()
 	{
 		if( !Config.IsServer && !Config.IsStandalone)
@@ -86,8 +92,11 @@ public class TriggerHatch : MonoBehaviour
         }
 		//OnTriggerEnter(null);
 		
-	} 
+	}
  
+	/**
+	 * Diese Methode wird jeden Update aufgerufen
+	 */
     void Update()
     { 
         if( !Config.IsServer )
@@ -100,10 +109,14 @@ public class TriggerHatch : MonoBehaviour
     }
  
  
+	/**
+	 * Diese Methode wird ausgelöst wenn ein Objekt den Trigger betritt.
+	 */
     void OnTriggerEnter( Collider other )
     {
 		if (IsClose)
 		{
+			// Handelt es sich dabei um den Spieler wird der Trigger ausgelöst.
 			if (Config.IsStandalone && other.tag.Equals("Player")) {
 				RPCAnimate(true);
 			}
@@ -112,19 +125,17 @@ public class TriggerHatch : MonoBehaviour
 			}
 			IsClose = false;
 		}
-        //if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
-        //{
-        //    return;
-        //}
-		//else
-	    //    Open();
     }
  
  
+	/**
+	 * Diese Methode wird ausgelöst wenn ein Objekt den Trigger verlässt.
+	 */
     void OnTriggerExit( Collider other )
     {
 		if (!IsClose)
 		{
+			// Ist es ein Spieler soll die Animation gespielt werden.
 			if (Config.IsStandalone && other.tag.Equals("Player")) {
 				RPCAnimate(false);
 			}
@@ -133,12 +144,6 @@ public class TriggerHatch : MonoBehaviour
 			}
 			IsClose = true;
 		}
-        //if( Trigger != TriggerObject.DistanceByCollider || !Config.IsServer || !other.gameObject.tag.Equals( "Player" ) )
-        //{
-        ///    return;
-       // }
-         
-        //Close();
     }
 
     #endregion
@@ -160,13 +165,23 @@ public class TriggerHatch : MonoBehaviour
         }
     }
  
- 
+ 	/**
+ 	 * Diese Methode wird aufgerufen, wenn es sich um eine Cave handelt und 
+ 	 * der aktuelle Rechner der Server ist. Hier wird der RPC [Remote Procedure Call]
+ 	 * aufgerufen. Die dann die Methode RPCAnimate auf allen Rechnern mit den Parameter
+ 	 * true aufruft.
+ 	 */
     private void Open()
     {
         networkView.RPC( "RPCAnimate", RPCMode.All, true );
     }
  
- 
+ 	/**
+ 	 * Diese Methode wird aufgerufen, wenn es sich um eine Cave handelt und 
+ 	 * der aktuelle Rechner der Server ist. Hier wird der RPC [Remote Procedure Call]
+ 	 * aufgerufen. Die dann die Methode RPCAnimate auf allen Rechnern mit den Parameter
+ 	 * false aufruft.
+ 	 */
     private void Close()
     {
         NetView.RPC( "RPCAnimate", RPCMode.All, false );
@@ -178,6 +193,12 @@ public class TriggerHatch : MonoBehaviour
     // =============================================================================
     // METHODS RPC -----------------------------------------------------------------
  
+	/**
+	 * Diese Methode wird auf allen Rechnern ausgeführt und wird gestartet als RPC vom
+	 * Server aus.
+	 * 
+	 * @param open True, wenn die Tür geöffnet werden soll. Andernfalls wird sie geschlossen. 
+	 */
     [RPC]
     void RPCAnimate( bool open )
     {
